@@ -1,0 +1,15 @@
+<div *ngIf="userList">
+  <div *ngFor="let user of userList">
+    <div *ngIf="user.id !== profile?.id" class="user-card">
+      <div class="user-info">
+        <img [src]="'data:image/png;base64,' + user?.image" alt="Profile Image" class="img-circle">
+        <h3>{{ user.userName }}</h3>
+      </div>
+      <div class="user-actions">
+        <button *ngIf="!user.followed" (click)="followUser(user)">Follow</button>
+        <button *ngIf="user.followed" (click)="unfollowUser(user)">Unfollow</button>
+        <button (click)="removeUser(user)" [disabled]="user.followed">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>

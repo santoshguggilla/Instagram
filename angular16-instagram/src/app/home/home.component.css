@@ -1,0 +1,31 @@
+/* .sidebar {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-right: 1px solid #ccc;
+  } */
+  
+  /* .container {
+    padding: 15px;
+  }
+   */
+
+.row{
+  overflow: hidden;
+
+  
+
+}
+.profile-image {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  overflow: hidden;
+  border-radius: 50%; /* Makes the container a circle */
+  cursor: pointer;
+  margin: 10px auto; /* Centers the circle */
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto; /* Ensures image scales properly */
+  display: block;
+}

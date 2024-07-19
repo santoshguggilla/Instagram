@@ -1,0 +1,70 @@
+/* Base styles for the post-row */
+.post-row {
+  display: flex;
+  justify-content: center; /* Center content */
+  margin-bottom: 20px;
+}
+
+.post {
+  margin: 0; /* Remove margin to align posts properly */
+  box-sizing: border-box;
+}
+
+/* Styles for images and videos in posts */
+.post img,
+.post video {
+  width: 100%; /* Full width of the post container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure content covers the area */
+}
+
+/* Styles for profile row */
+.profile-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile-row .post {
+  flex: 0 0 calc(33.333% - 20px); /* 3 posts per row with spacing */
+}
+
+/* Styles for home row */
+.home-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+.home-row .post {
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+}
+
+.home-posts {
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  object-fit: contain; /* Cover the entire viewport */
+}
+
+/* Navigation button styles for home row */
+.nav-buttons {
+  position: absolute; /* Position at the bottom of the viewport */
+  bottom: 20px; /* Space from the bottom of the screen */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+.nav-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}

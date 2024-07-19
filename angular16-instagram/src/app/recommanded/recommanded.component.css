@@ -1,0 +1,40 @@
+.user-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info img {
+    border-radius: 50%;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    margin-right: 16px;
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-actions button {
+    margin-left: 8px;
+  }
+  
+
+  img.img-circle {
+    width: 100px; /* Set a fixed width for the profile image */
+    height: 100px; /* Set a fixed height for the profile image */
+    border-radius: 50%; /* Make the image circular */
+    margin-right: 10px; /* Space between image and text */
+    border: 2px solid blue;
+    transition: transform 0.3s ease;
+  }
+  

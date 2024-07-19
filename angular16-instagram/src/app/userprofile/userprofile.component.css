@@ -1,0 +1,87 @@
+/* userprofile.component.css */
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.profile-container img.img-circle {
+    width: 150px; /* Set a fixed width for the profile image */
+    height: 150px; /* Set a fixed height for the profile image */
+    border-radius: 50%; /* Make the image circular */
+    border: 2px solid blue;
+    transition: transform 0.3s ease;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.small-block {
+    width: 150px;
+    height: 150px;
+    margin-top: 70px;
+    margin-left: 150px;
+}
+
+.large-block {
+    width: 300px;
+    height: auto; /* Allow height to adjust based on content */
+    margin-left: 20px;
+}
+
+.user-block {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.userdetails-block {
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure the blocks take the full width */
+    gap: 10px; /* Space between the inner blocks */
+}
+
+.inner-block {
+    flex: 1; /* Ensure each block takes equal space */
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.inner-block.posts {
+    flex: 2; /* Make the "posts" block wider */
+}
+
+.inner-block:not(.posts) {
+    flex: 1; /* Ensure other blocks take equal space */
+}
+
+.inner-block:not(:last-child) {
+    margin-right: 10px; /* Optional: add space between inner blocks */
+}
+/* .postlist{
+    margin-top: 70px;
+    margin-left: 150px;
+} */

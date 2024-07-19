@@ -1,0 +1,79 @@
+.signup-container{
+    max-width: 350px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0e71ce;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+
+  button.login-facebook {
+    background-color: #1877F2;
+    border-radius: 10px;
+  }
+  
+  .divider {
+    position: relative;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #dbdbdb;
+  }
+
+  .divider::before {
+    left: 0;
+  }
+
+  .divider::after {
+    right: 0;
+  }
+
+  .signup-link {
+    max-width: 350px;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    /* padding: 20px; */
+    font-size: 25px;
+    height: 1px;
+    
+  }
+
+  .signup-link a {
+    color: #3897f0;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+

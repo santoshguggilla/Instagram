@@ -1,0 +1,36 @@
+<div class="container" style="background-color: rgb(243, 99, 16);">
+  <div class="profile-container block small-block">
+    <img [src]="'data:image/png;base64,' + user?.image" alt="Profile Image" class="img-circle profile-image" (click)="uploadProfilePhoto()">
+  </div>
+
+  <div class="profile-details">
+    <div class="block large-block" *ngIf="user">
+      <div class="user-block">
+        {{user.email}}
+      </div>
+      <div class="user-block userdetails-block">
+        <div class="inner-block">
+         {{posts}} posts 
+        </div>
+        <div class="inner-block">
+         {{followers}} followers
+        </div>
+        <div class="inner-block">
+         {{followees}} following
+        </div>
+      </div>
+      <div class="user-block">
+        jsdfgkjdfkg
+      </div>
+    </div>
+
+    <div *ngIf="!user">
+      <p>No user details available.</p>
+    </div>
+  </div>
+</div>
+<hr style="background-color: blueviolet;height: 10px;">
+
+<div class="container profile-post-list">
+  <app-post-list [user]="user"></app-post-list>
+</div>
