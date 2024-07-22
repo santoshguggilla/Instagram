@@ -9,5 +9,9 @@ public class FollowInstagramApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FollowInstagramApplication.class, args);
 	}
+	
+	public void method() {
+		
+	}
 
 }
