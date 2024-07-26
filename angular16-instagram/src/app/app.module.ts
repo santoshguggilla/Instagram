@@ -27,6 +27,7 @@ import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
 import { ProfileUploadComponent } from './profile-upload/profile-upload.component';
 import { MatCardModule } from '@angular/material/card';
 import { RecommandedComponent } from './recommanded/recommanded.component';
+import { UserStatusComponent } from './user-status/user-status.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RecommandedComponent } from './recommanded/recommanded.component';
     ThemeToggleComponent,
     ProfileUploadComponent,
     RecommandedComponent,
+    UserStatusComponent,
  
   ],
   imports: [

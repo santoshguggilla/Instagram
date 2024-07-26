@@ -48,4 +48,8 @@ export class StatusComponent {
       this.currentIndex--;
     }
   }
+
+  navigateToUserStatus(userid:any){
+    this.router.navigate(['userstatus',userid]);
+  }
 }

@@ -1,7 +1,7 @@
 <div class="user-list-container">
     <div class="user-list">
         <div *ngFor="let user of visibleUsers" class="user-info">
-            <img [src]="'data:image/png;base64,' + user?.image" alt="Profile Image" class="img-circle">
+            <img [src]="'data:image/png;base64,' + user?.image" alt="Profile Image" class="img-circle" (click)="navigateToUserStatus(user?.id)">
             <h3>{{ user?.userName }}</h3>
         </div>
     </div>

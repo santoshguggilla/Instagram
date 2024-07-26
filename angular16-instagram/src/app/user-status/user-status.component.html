@@ -1,0 +1,30 @@
+
+  <div class="row  ">
+    <div class="col-3" style="background-color: black;">
+      <!-- First section content -->
+       <h3>black</h3>
+    </div>
+    <div class="col-6" style="background-color: blueviolet; height: 100vh; overflow: hidden;">
+      <!-- Second section content -->
+      <div class="video-container" style="position: relative; width: 100%; height: 100%;">
+        <video id="reel-video" style="width: 100%; height: 100%; object-fit: cover;" controls autoplay muted loop>
+          <source src="src/uploads/Video-464.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="overlay-controls" style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center; z-index: 10;">
+          <img [src]="profilePhoto" alt="User Profile Photo" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; margin-right: 10px;">
+          <button id="pause-button" style="background: transparent; border: none; color: white; font-size: 24px; margin-right: 10px;">&#10074;&#10074;</button>
+          <button id="volume-button" style="background: transparent; border: none; color: white; font-size: 24px;">&#128266;</button>
+        </div>
+        <div class="description-overlay" style="position: absolute; bottom: 10px; left: 10px; right: 10px; color: white; background-color: rgba(0, 0, 0, 0.5); padding: 5px 10px; border-radius: 5px; z-index: 10;">
+          <p>{{ videoDescription }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-3" style="background-color: brown;">
+      <!-- Third section content -->
+      <h3>brown</h3>
+    </div>
+  </div>
+
