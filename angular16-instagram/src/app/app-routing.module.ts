@@ -10,6 +10,7 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { CreatePostModalComponent } from './create-post-modal/create-post-modal.component';
 import { RecommandedComponent } from './recommanded/recommanded.component';
+import { UserStatusComponent } from './user-status/user-status.component';
 
 const routes: Routes = [
 
@@ -29,6 +30,8 @@ const routes: Routes = [
       {
         path:'recommandedList' , component:RecommandedComponent
       },
+     
+      
       // Add other routes here
     ]
   },
@@ -40,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: 'reset-password', component: ResetPasswordComponent
+  },
+  {
+    path:'userstatus/:id', component: UserStatusComponent
   },
 ];
 
