@@ -14,5 +14,8 @@ public class FollowInstagramApplication {
 		System.out.println("Testing");
 		System.out.println("testing confilts");
 	}
+	public void confitls() {
+		System.out.println("testing");
+	}
 
 }
