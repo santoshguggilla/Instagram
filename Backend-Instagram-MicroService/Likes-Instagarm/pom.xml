@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Likes-Instagarm</name>
 	<description>Employee Management system using spring boot and angular</description>
+	<packaging>war</packaging>
 	<url/>
 	<licenses>
 		<license/>

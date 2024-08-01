@@ -18,7 +18,7 @@ import com.backend.instagram.service.InstagramAccountService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins={ "http://localhost:4200"})
+@CrossOrigin(origins={ "http://localhost:52774","http://10.0.0.42:4200"})
 public class InstagramAccountController {
 
 	@Autowired
@@ -50,7 +50,10 @@ public class InstagramAccountController {
 		return instagramAccountService.resetPassword(token,password);
 	}
 	
-	@GetMapping("/profile/{id}")
+	@GetMapping("/"
+			+ ""
+			+ ""
+			+ "/{id}")
 	public InstagramAccount viewProfile(@PathVariable("id") int id){
 		return instagramAccountService.getAccountById(id);
 	}

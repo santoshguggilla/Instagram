@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 export class UserService {
   
   
-  userUrl: string = "http://localhost:8080/api";
+  userUrl: string = "http://10.0.0.42:8080/api";
 
   constructor(private http: HttpClient) {
    
