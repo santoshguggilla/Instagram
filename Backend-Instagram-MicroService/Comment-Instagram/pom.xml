@@ -9,11 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>DailyStory-Instagram</artifactId>
+	<artifactId>Comment-Instagram</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DailyStory-Instagram</name>
+	<name>Comment-Instagram</name>
 	<description>Instagram Cloning</description>
-	<packaging>war</packaging>
 	<url/>
 	<licenses>
 		<license/>

@@ -15,7 +15,7 @@ import com.backend.instagram.service.StoryService;
 
 @RestController
 @RequestMapping("/story")
-@CrossOrigin(origins = {"http://localhost/4200"})
+@CrossOrigin(origins = {"http://localhost:52774","http://10.0.0.42:4200"})
 public class StoryController {
 
 	@Autowired
