@@ -28,7 +28,7 @@ import { ProfileUploadComponent } from './profile-upload/profile-upload.componen
 import { MatCardModule } from '@angular/material/card';
 import { RecommandedComponent } from './recommanded/recommanded.component';
 import { UserStatusComponent } from './user-status/user-status.component';
-import { ChatComponent } from './chat/chat.component';
+
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { ChatComponent } from './chat/chat.component';
     ProfileUploadComponent,
     RecommandedComponent,
     UserStatusComponent,
-    ChatComponent,
+
  
   ],
   imports: [
