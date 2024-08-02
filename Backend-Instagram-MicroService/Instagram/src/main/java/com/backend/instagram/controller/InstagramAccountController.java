@@ -1,6 +1,5 @@
 package com.backend.instagram.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,53 +17,51 @@ import com.backend.instagram.service.InstagramAccountService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins={ "http://localhost:52774","http://10.0.0.42:4200"})
+@CrossOrigin(origins = { "http://localhost:52774", "http://10.0.0.42:4200" })
 public class InstagramAccountController {
 
 	@Autowired
 	private InstagramAccountService instagramAccountService;
-	
+
 	@PostMapping("/signup")
-	public ResponseEntity<Object> signUpAccount(@RequestBody InstagramAccount instagramAccount){
+	public ResponseEntity<Object> signUpAccount(@RequestBody InstagramAccount instagramAccount) {
 		return instagramAccountService.signUpAccount(instagramAccount);
 	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<Object> accountLogin(@RequestBody InstagramAccount instagramAccount){
+	public ResponseEntity<Object> accountLogin(@RequestBody InstagramAccount instagramAccount) {
 		return instagramAccountService.accountLogin(instagramAccount);
 	}
-	
+
 	@PostMapping("/forgot-password")
-	public ResponseEntity<Object> forgotPassword(@RequestParam("email") String email){
+	public ResponseEntity<Object> forgotPassword(@RequestParam("email") String email) {
 		return instagramAccountService.forgotPassword(email);
 	}
-	
+
 	@PostMapping("/validate-reset-token")
-    public ResponseEntity<Object> validateResetToken(@RequestParam("token") String token) {
+	public ResponseEntity<Object> validateResetToken(@RequestParam("token") String token) {
 		return instagramAccountService.validateResetToken(token);
-    }
-	
-	
-	@PostMapping("/reset-password")
-	public  ResponseEntity<Object> resetPassword(@RequestParam("token") String token , @RequestParam("newPassword") String password){
-		return instagramAccountService.resetPassword(token,password);
 	}
-	
-	@GetMapping("/"
-			+ ""
-			+ ""
-			+ "/{id}")
-	public InstagramAccount viewProfile(@PathVariable("id") int id){
+
+	@PostMapping("/reset-password")
+	public ResponseEntity<Object> resetPassword(@RequestParam("token") String token,
+			@RequestParam("newPassword") String password) {
+		return instagramAccountService.resetPassword(token, password);
+	}
+
+	@GetMapping("/profile/{id}")
+	public InstagramAccount viewProfile(@PathVariable("id") int id) {
 		return instagramAccountService.getAccountById(id);
 	}
-	
+
 	@PostMapping("/uploadprofile/{id}")
-	public ResponseEntity<Object> uploadImage(@PathVariable("id") int id, @RequestParam("file") MultipartFile imageUrl){
+	public ResponseEntity<Object> uploadImage(@PathVariable("id") int id,
+			@RequestParam("file") MultipartFile imageUrl) {
 		return instagramAccountService.uploadImage(id, imageUrl);
 	}
-	
+
 	@GetMapping("/getUserList")
-	public ResponseEntity<Object> getUserList(){
+	public ResponseEntity<Object> getUserList() {
 		return instagramAccountService.getUserList();
 	}
 }
