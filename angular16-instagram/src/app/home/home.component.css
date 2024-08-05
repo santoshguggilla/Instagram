@@ -28,4 +28,5 @@
   width: 100%;
   height: auto; /* Ensures image scales properly */
   display: block;
+  overflow: hidden;
 }

@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -6,7 +6,7 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrls: ['./theme-toggle.component.css']
 })
 export class ThemeToggleComponent {
-
+  @Output() themeChanged = new EventEmitter<string>();
   constructor(private renderer: Renderer2) {}
 
   toggleTheme() {
@@ -14,5 +14,6 @@ export class ThemeToggleComponent {
     this.renderer.removeClass(document.body, 'light-theme');
     this.renderer.removeClass(document.body, 'dark-theme');
     this.renderer.addClass(document.body, theme);
+    this.themeChanged.emit(theme); // Emit the current theme
   }
 }

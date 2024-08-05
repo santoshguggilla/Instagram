@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { User } from '../models/user.model';
@@ -20,7 +20,8 @@ export class SidebarComponent {
   constructor(private authService: AuthService, 
     private router: Router,
     public dialog: MatDialog,
-    private userService:UserService
+    private userService:UserService,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -71,5 +72,10 @@ export class SidebarComponent {
   recommanded() {
     this.router.navigate(['recommandedList']);
   }
-  
+  onThemeChange(theme: string) {
+    const profileHeader = document.querySelector('.profile-container h4') as HTMLElement;
+    if (profileHeader) {
+      profileHeader.style.color = theme === 'dark-theme' ? '#fff' : '#333'; // Update color based on theme
+    }
+  }
 }

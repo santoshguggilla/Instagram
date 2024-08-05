@@ -1,97 +1,120 @@
 .sidebar {
-    /* width: 200px; Adjust width as needed */
-    padding: 10px;
-   /* background-color: #087aec;  Light background color */
-    height: 100vh; /* Full height sidebar */
-  }
-  
-  .sidebar img.img-fluid {
-    width: 100%; /* Make logo image responsive */
-    cursor: pointer;
-    height: 40px;
-  }
-  
-  .profile-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 20px; /* Adjust spacing as needed */
-  }
-  
-  .profile-container img.img-circle {
-    width: 50px; /* Set a fixed width for the profile image */
-    height: 50px; /* Set a fixed height for the profile image */
-    border-radius: 50%; /* Make the image circular */
-    margin-right: 10px; /* Space between image and text */
-    border: 2px solid blue;
-    transition: transform 0.3s ease;
-  }
+  padding: 10px;
+  height: 100vh;
+}
 
-  .profile-container img.img-circle:hover {
-    transform: scale(2.1); /* Scale up the image on hover */
-  }
-  
-  .sidebar .button-container {
-    width: 100%; /* Make button span the full width of its parent container */
-  }
-  
-  .sidebar .btn-block {
-    width: 100%; /* Full width button */
-  }
-  
-  .post{
-    float: left;
-    border: none;
+h1{
+  font-weight: bold;
+  font-size: 25px;
+}
+.sidebar img.img-fluid {
+  width: 100%;
+  cursor: pointer;
+  height: 40px;
+}
 
-  }
+.profile-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 
-  .unique-button {
-    padding: 10px 13px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #3498db;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    outline: none;
-    position: relative;
-    overflow: hidden;
-  }
+.profile-container img.img-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid blue;
+  transition: transform 0.3s ease;
+}
 
-  .unique-button:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, rgba(182, 3, 3, 0.5), rgba(255, 255, 255, 0) 70%);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
+.profile-container img.img-circle:hover {
+  transform: scale(2.1);
+}
 
-  .unique-button:hover:before {
-    opacity: 1;
-  }
+.sidebar .button-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
 
-  .unique-button:hover {
-    background-color: #fa0505;
-    color: black;
-    font-weight: bold;
-  }
+.unique-button, .post {
+  padding: 10px 13px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Ensure full width */
+}
 
-  .unique-button:active {
-    transform: scale(0.95);
-  }
+.unique-button:before, .post:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(182, 3, 3, 0.5), rgba(255, 255, 255, 0) 70%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
 
+.unique-button:hover:before, .post:hover:before {
+  opacity: 1;
+}
+
+.unique-button:hover, .post:hover {
+  background-color: #fa0505;
+  color: black;
+  font-weight: bold;
+}
+
+.unique-button:active, .post:active {
+  transform: scale(0.95);
+}
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
+
+
+
+.sidebar-item {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.sidebar-item .button-container, .sidebar-item  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Default styles for Profile header */
+.sidebar .profile-container h4 {
+  color: #333; /* Default color */
+}
+
+/* Dark theme styles for Profile header */
+.dark-theme .sidebar .profile-container h4 {
+  color: #fff; /* Color when dark theme is active */
+font-weight: bold;
+}
+
+
