@@ -20,27 +20,40 @@
 </div>
 <!-- For home row only -->
 <div *ngIf="!isProfilePage">
-  <div class="post-row home-row">
-    <div class="post">
-      <div class="post-header">
-        <!-- Add any header content here -->
+  <div class="row  ">
+    <div class="col-3" >
+      <!-- First section content -->
+       <h3>black</h3>
+    </div>
+    <div class="col-6" style=" height: 100vh; overflow: hidden;">
+      <div class="post-row home-row" >
+        <div class="post" >
+          <div class="post-header">
+            <!-- Add any header content here -->
+          </div>
+          <div class="post-content post-home" *ngIf="visiblePost?.imageUrl" >
+            <img [src]="'data:image/png;base64,' + visiblePost?.imageUrl" alt="Post Image" class="home-posts">
+            <p>{{ visiblePost?.content }}</p>
+          </div>
+          <div class="post-content post-home" *ngIf="visiblePost?.videoUrl">
+            <video controls>
+              <source [src]="'data:video/mp4;base64,' + visiblePost?.videoUrl" type="video/mp4" class="home-posts">
+              Your browser does not support the video tag.
+            </video>
+            <p>{{ visiblePost?.content }}</p>
+          </div>
+        </div>
       </div>
-      <div class="post-content" *ngIf="visiblePost?.imageUrl">
-        <img [src]="'data:image/png;base64,' + visiblePost?.imageUrl" alt="Post Image" class="home-posts">
-        <p>{{ visiblePost?.content }}</p>
-      </div>
-      <div class="post-content" *ngIf="visiblePost?.videoUrl">
-        <video controls>
-          <source [src]="'data:video/mp4;base64,' + visiblePost?.videoUrl" type="video/mp4" class="home-posts">
-          Your browser does not support the video tag.
-        </video>
-        <p>{{ visiblePost?.content }}</p>
+      
+    </div>
+    <div class="col-3">
+      
+      <h3>brown</h3>
+      <div class="nav-buttons">
+        <button class="nav-button" (click)="previousPost()">&#8593;</button> <!-- Up arrow for previous -->
+        <button class="nav-button" (click)="nextPost()">&#8595;</button> <!-- Down arrow for next -->
       </div>
     </div>
-  </div>
-  <div class="nav-buttons">
-    <button class="nav-button" (click)="previousPost()">&#8593;</button> <!-- Up arrow for previous -->
-    <button class="nav-button" (click)="nextPost()">&#8595;</button> <!-- Down arrow for next -->
   </div>
 </div>
 

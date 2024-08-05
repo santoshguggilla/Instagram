@@ -28,4 +28,7 @@ export class PostService {
     formData.append('file', file);
     return this.http.post<Post>(`${this.postUrl}/createpost/${userId}`, formData);
   }
+  
+
+
 }

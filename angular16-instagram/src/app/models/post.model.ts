@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export interface Post {
     id: number;
     userId: number;
@@ -5,8 +7,8 @@ export interface Post {
     videoUrl:string;
     caption: string;
     likes: number;
-    comments: string[];
+    comments: Comment;
     createdAt: Date;
     content:string;
-
+    user?:User;
   }
