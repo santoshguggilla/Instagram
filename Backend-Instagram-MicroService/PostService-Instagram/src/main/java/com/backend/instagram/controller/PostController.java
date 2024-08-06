@@ -1,4 +1,4 @@
-package com.backend.instagram.controller;
+  package com.backend.instagram.controller;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import com.backend.instagram.service.PostService;
 
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins={"http://localhost:4200", "http://localhost:52190"})   
 public class PostController {
     @Autowired
     private PostService postService;

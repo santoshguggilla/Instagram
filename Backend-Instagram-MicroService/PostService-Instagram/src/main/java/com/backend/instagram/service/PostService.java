@@ -14,6 +14,8 @@ public interface PostService {
 	List<Post> findAll();
 
 	ResponseEntity<Object> createPost(int id, MultipartFile file,Post post);
+
+	void deletePost(int postid);
 	    
 
 }
