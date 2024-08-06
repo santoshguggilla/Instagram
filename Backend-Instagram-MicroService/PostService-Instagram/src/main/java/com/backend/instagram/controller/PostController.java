@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import com.backend.instagram.model.Post;
 import com.backend.instagram.service.PostService;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/posts")  
 @CrossOrigin(origins={"http://localhost:4200", "http://localhost:52190"})   
 public class PostController {
     @Autowired
@@ -37,6 +38,11 @@ public class PostController {
     public ResponseEntity<Object> createPost(@PathVariable("id") int id,@RequestParam("file") MultipartFile file){
     	Post post=new Post();
     	return postService.createPost(id,file,post);
+    }
+    
+    @DeleteMapping("/deletepost/{postid}")
+    public void deletePost(@PathVariable("postid") int postid) {
+    	postService.deletePost(postid);
     }
    
 }
