@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
+  users:User[]=[];
   @Input() user: User | null = null;
   isProfilePage: boolean | undefined;
   currentIndex = 0;
@@ -45,9 +46,42 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   loadAllPosts(): void {
-    this.postService.getAllPosts().subscribe(posts => {
-      this.posts = posts;
-      console.log(posts);
+    this.postService.getAllPosts().subscribe(
+      posts => {
+        this.posts = posts;
+        console.log(posts);
+        this.getAllUsers();
+      },
+      error => {
+        console.error('Error loading posts:', error);
+      }
+    );
+  }
+  getAllUsers(): void {
+    const userIds = this.posts.map(post => post.userId);
+    this.userService.getAllUsersByPosts(userIds).subscribe(
+      users => {
+        this.users = users;
+        this.mapUsersToPosts();
+      },
+      error => {
+        console.error('Error loading users:', error);
+      }
+    );
+  }
+
+  mapUsersToPosts(): void {
+    const userMap = new Map<number, User>();
+    
+    // Ensure user.id is defined before using it
+    this.users.forEach(user => {
+      if (user.id !== undefined) {
+        userMap.set(user.id, user);
+      }
+    });
+  
+    this.posts.forEach(post => {
+      post.user = userMap.get(post.userId);
     });
   }
 

@@ -19,7 +19,7 @@ import com.backend.instagram.service.PostService;
 
 @RestController
 @RequestMapping("/posts")  
-@CrossOrigin(origins={"http://localhost:4200", "http://localhost:52190"})   
+@CrossOrigin(origins={"http://localhost:4200", "http://localhost:52190","http://**"})   
 public class PostController {
     @Autowired
     private PostService postService;

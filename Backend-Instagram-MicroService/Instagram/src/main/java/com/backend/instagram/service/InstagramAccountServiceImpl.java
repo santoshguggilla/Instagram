@@ -3,16 +3,18 @@ package com.backend.instagram.service;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -165,6 +167,12 @@ public class InstagramAccountServiceImpl implements InstagramAccountService {
 	@Override
 	public ResponseEntity<Object> getUserList() {
 		return ResponseEntity.ok(instagramAccountRepository.findAll());
+	}
+
+	@Override
+	public ResponseEntity<Object> getUsersByPosts( List<Integer> userids) {
+		 
+		return ResponseEntity.ok(instagramAccountRepository.findByUserIdList(userids));
 	}
 
 	
