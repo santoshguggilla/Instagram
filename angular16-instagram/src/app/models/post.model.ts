@@ -7,7 +7,6 @@ export interface Post {
     videoUrl:string;
     caption: string;
     likes: number;
-    comments: Comment;
     createdAt: Date;
     content:string;
     user?:User;

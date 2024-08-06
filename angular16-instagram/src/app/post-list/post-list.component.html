@@ -28,8 +28,15 @@
     <div class="col-6" style=" height: 100vh; overflow: hidden;">
       <div class="post-row home-row" >
         <div class="post" >
-          <div class="post-header">
+          <div  class="post-header">
             <!-- Add any header content here -->
+             
+            <div class="profile-container" >
+              <span>
+                <img [src]="'data:image/png;base64,' + visiblePost?.user?.image" alt="Profile Image" class="img-circle">
+                <h1>Profile</h1>
+              </span>
+            </div>
           </div>
           <div class="post-content post-home" *ngIf="visiblePost?.imageUrl" >
             <img [src]="'data:image/png;base64,' + visiblePost?.imageUrl" alt="Post Image" class="home-posts">
@@ -38,16 +45,16 @@
           <div class="post-content post-home" *ngIf="visiblePost?.videoUrl">
             <video controls>
               <source [src]="'data:video/mp4;base64,' + visiblePost?.videoUrl" type="video/mp4" class="home-posts">
-              Your browser does not support the video tag.
             </video>
             <p>{{ visiblePost?.content }}</p>
           </div>
+          <div class="post-footer">
+            <p>descrptinf bm, </p> <!-- Post description at the bottom -->
+          </div>
         </div>
       </div>
-      
     </div>
     <div class="col-3">
-      
       <h3>brown</h3>
       <div class="nav-buttons">
         <button class="nav-button" (click)="previousPost()">&#8593;</button> <!-- Up arrow for previous -->

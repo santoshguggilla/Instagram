@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DiscoveryService } from '../service/discovery.service';
 import { Observable } from 'rxjs';
@@ -10,7 +10,8 @@ import { User } from '../models/user.model';
 export class UserService {
   
   
-  userUrl: string = "http://10.0.0.42:8080/api";
+  
+  userUrl: string = "http://localhost:8080/api";
 
   constructor(private http: HttpClient) {
    
@@ -46,7 +47,10 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.userUrl}/getUserList`);
   }
-  getUserListByPostList(userids:any[]): Observable<any> {
-    return this.http.post<any>(`${this.userUrl}/getUsers/`, userids);
+
+  getAllUsersByPosts(userids: number[]): Observable<User[]> {
+    const params = new HttpParams().set('userids', userids.join(','));
+    return this.http.get<User[]>(`${this.userUrl}/getusers`, { params });
   }
+  
 }

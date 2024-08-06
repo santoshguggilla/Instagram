@@ -1,5 +1,7 @@
 package com.backend.instagram.service;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +31,8 @@ public interface InstagramAccountService {
 	ResponseEntity<Object> uploadImage(int id, MultipartFile imageUrl);
 
 	ResponseEntity<Object> getUserList();
+
+	ResponseEntity<Object> getUsersByPosts(List<Integer> userids);
 
 
 }

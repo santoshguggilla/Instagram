@@ -1,5 +1,7 @@
 package com.backend.instagram.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +17,8 @@ public interface InstagramAccountRepository extends JpaRepository<InstagramAccou
 	InstagramAccount findByEmail(String email);
 
 	InstagramAccount findByResetToken(String token);
+	
+	@Query("select al from InstagramAccount as al where al.id in (?1)")
+	List<InstagramAccount> findByUserIdList(List<Integer> userids);
 
 }

@@ -1,5 +1,7 @@
 package com.backend.instagram.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -63,5 +65,10 @@ public class InstagramAccountController {
 	@GetMapping("/getUserList")
 	public ResponseEntity<Object> getUserList() {
 		return instagramAccountService.getUserList();
+	}
+	
+	@GetMapping("/getusers")
+	public ResponseEntity<Object> getUsersByPosts(@RequestParam List<Integer> userids ){
+		return instagramAccountService.getUsersByPosts(userids);
 	}
 }
