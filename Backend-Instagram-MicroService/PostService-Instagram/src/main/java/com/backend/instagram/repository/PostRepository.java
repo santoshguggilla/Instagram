@@ -8,5 +8,7 @@ import com.backend.instagram.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUserId(int userId);
+
+	void deleteById(int postid);
 }
 
