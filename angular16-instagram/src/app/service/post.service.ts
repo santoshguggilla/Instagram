@@ -8,27 +8,31 @@ import { Post } from '../models/post.model';
   providedIn: 'root'
 })
 export class PostService {
-
+  
   private postUrl: string="http://10.0.0.42:8082/posts";
-
+  
   constructor(private http: HttpClient) {
     
   }
-
+  
   getPostsByUserId(userId: string): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.postUrl}/user/${userId}`);
   }
-
+  
   getAllPosts():Observable<Post[]>{
     return this.http.get<Post[]>(`${this.postUrl}/posts`);
   }
-
+  
   createPost(userId: string, file: File): Observable<Post> {
     const formData: FormData = new FormData();
     formData.append('file', file);
     return this.http.post<Post>(`${this.postUrl}/createpost/${userId}`, formData);
   }
   
-
-
+  getPostsById(postid: string): Observable<Post> {
+    return this.http.get<Post>(`${this.postUrl}/viewpost/${postid}`);
+  }
+  deletePostById(postid: any) :Observable<any>{
+   return this.http.delete(`${this.postUrl}/deletepost/${postid}`)
+  }
 }

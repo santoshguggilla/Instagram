@@ -35,14 +35,19 @@ public class PostController {
     }
     
     @PostMapping("/createpost/{id}")
-    public ResponseEntity<Object> createPost(@PathVariable("id") int id,@RequestParam("file") MultipartFile file){
+    public ResponseEntity<Object> createPost(@PathVariable("id") int id,@RequestParam("file") MultipartFile file, @RequestParam("descrption") String description){
     	Post post=new Post();
-    	return postService.createPost(id,file,post);
+    	return postService.createPost(id,file,description,post);
     }
     
     @DeleteMapping("/deletepost/{postid}")
-    public void deletePost(@PathVariable("postid") int postid) {
-    	postService.deletePost(postid);
+    public ResponseEntity<Object> deletePost(@PathVariable("postid") int postid) {
+    	return (ResponseEntity<Object>) postService.deletePost(postid);
+    }
+    
+    @GetMapping("/viewpost/{postid}")
+    public ResponseEntity<Object> viewPost(@PathVariable("postid") int postid){
+    	return postService.viewPost(postid);
     }
    
 }

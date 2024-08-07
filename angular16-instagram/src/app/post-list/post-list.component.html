@@ -1,14 +1,14 @@
 <div *ngIf="isProfilePage">
-  <div   *ngFor="let row of chunk(posts, isProfilePage ? 3 : 1)" class="post-row" [ngClass]="{ 'profile-row': isProfilePage, 'home-row': !isProfilePage }">
+  <div *ngFor="let row of chunk(posts, isProfilePage ? 3 : 1)" class="post-row" [ngClass]="{ 'profile-row': isProfilePage, 'home-row': !isProfilePage }">
     <div *ngFor="let post of row" class="post">
       <div class="post-header">
         <!-- Add any header content here -->
       </div>
-      <div class="post-content" *ngIf="post.imageUrl">
-        <img [src]="'data:image/png;base64,' + post.imageUrl" alt="Post Image" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}">
+      <div class="post-content" *ngIf="post.imageUrl" (click)="viewPost(post)">
+        <img [src]="'data:image/png;base64,' + post.imageUrl" alt="Post Image" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}" style="transition: transform 0.3s ease; transform: scale(2.1);">
         <p>{{ post.content }}</p>
       </div>
-      <div class="post-content" *ngIf="post.videoUrl">
+      <div class="post-content" *ngIf="post.videoUrl" (click)="viewPost(post)">
         <video controls>
           <source [src]="'data:video/mp4;base64,' + post.videoUrl" type="video/mp4" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}">
           Your browser does not support the video tag.
@@ -20,25 +20,24 @@
 </div>
 <!-- For home row only -->
 <div *ngIf="!isProfilePage">
-  <div class="row  ">
-    <div class="col-3" >
+  <div class="row">
+    <div class="col-3">
       <!-- First section content -->
-       <h3>black</h3>
+      <h3>black</h3>
     </div>
-    <div class="col-6" style=" height: 100vh; overflow: hidden;">
-      <div class="post-row home-row" >
-        <div class="post" >
-          <div  class="post-header">
+    <div class="col-6" style="height: 100vh; overflow: hidden;">
+      <div class="post-row home-row">
+        <div class="post">
+          <div class="post-header">
             <!-- Add any header content here -->
-             
-            <div class="profile-container" >
+            <div class="profile-container" *ngIf="visiblePost">
               <span>
-                <img [src]="'data:image/png;base64,' + visiblePost?.user?.image" alt="Profile Image" class="img-circle">
+                <img [src]="'data:image/png;base64,' + visiblePost.user?.image" alt="Profile Image" class="img-circle">
                 <h1>Profile</h1>
               </span>
             </div>
           </div>
-          <div class="post-content post-home" *ngIf="visiblePost?.imageUrl" >
+          <div class="post-content post-home" *ngIf="visiblePost?.imageUrl">
             <img [src]="'data:image/png;base64,' + visiblePost?.imageUrl" alt="Post Image" class="home-posts">
             <p>{{ visiblePost?.content }}</p>
           </div>
@@ -49,7 +48,7 @@
             <p>{{ visiblePost?.content }}</p>
           </div>
           <div class="post-footer">
-            <p>descrptinf bm, </p> <!-- Post description at the bottom -->
+            <p>descrptinf bm,</p> <!-- Post description at the bottom -->
           </div>
         </div>
       </div>
@@ -63,4 +62,3 @@
     </div>
   </div>
 </div>
-
