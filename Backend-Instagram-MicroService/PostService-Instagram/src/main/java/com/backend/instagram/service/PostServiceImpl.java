@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.backend.instagram.model.Post;
 import com.backend.instagram.repository.PostRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PostServiceImpl implements PostService{
 
@@ -34,7 +36,7 @@ public class PostServiceImpl implements PostService{
 			return postRepository.findAll();
 		}
 		@Override
-		public ResponseEntity<Object> createPost(int id, MultipartFile file, Post post) {
+		public ResponseEntity<Object> createPost(int id, MultipartFile file, String description,Post post) {
 		    try {
 		        // Get the file extension
 		        String fileName = file.getOriginalFilename();
@@ -60,6 +62,7 @@ public class PostServiceImpl implements PostService{
 
 		        // Set the userId in the post and save it to the repository
 		        post.setUserId(id);
+		        post.setContent(description);
 		        postRepository.save(post);
 
 		        Map<String, String> response = new HashMap<>();
@@ -72,9 +75,25 @@ public class PostServiceImpl implements PostService{
 		    }
 		}
 
+		@Transactional
 		@Override
-		public void deletePost(int postid) {
-			postRepository.deleteById(postid);
+		public ResponseEntity<Object> deletePost(int postid) {
+			Post post=this.postRepository.findById(postid);
+			if(post!=null)
+			{
+				this.postRepository.deleteById(post.getId());
+				return ResponseEntity.status(HttpStatus.OK).body("Deleted Successfully");
+			}
+			else
+			{
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Not Deleted ");
+			}
+			
+		}
+
+		@Override
+		public ResponseEntity<Object> viewPost(int postid) {	
+			return ResponseEntity.status(HttpStatus.OK).body(postRepository.findById(postid));
 		}
 
 

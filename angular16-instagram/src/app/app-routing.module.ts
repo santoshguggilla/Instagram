@@ -11,6 +11,8 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { CreatePostModalComponent } from './create-post-modal/create-post-modal.component';
 import { RecommandedComponent } from './recommanded/recommanded.component';
 import { UserStatusComponent } from './user-status/user-status.component';
+import { ViewPostComponent } from './view-post/view-post.component';
+
 
 const routes: Routes = [
 
@@ -30,6 +32,10 @@ const routes: Routes = [
       {
         path:'recommandedList' , component:RecommandedComponent
       },
+      {
+        path:'viewpost/:id',component:ViewPostComponent
+      }
+      ,
      
       
       // Add other routes here

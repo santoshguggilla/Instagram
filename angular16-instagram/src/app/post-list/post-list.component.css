@@ -1,11 +1,10 @@
 /* Base styles for the post-row */
-
-
 .post-row {
   display: flex;
   justify-content: center; /* Center content */
   margin-bottom: 20px;
   overflow: hidden; /* Hide overflow content */
+  flex-wrap: wrap; /* Ensure wrapping for smaller screens */
 }
 
 .post {
@@ -21,7 +20,13 @@
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure content covers the area */
   display: block; /* Ensure images and videos do not cause extra space below */
-  overflow-x: hidden;
+  transition: opacity 0.3s ease; /* Add transition for fade-out effect */
+}
+
+/* Fade-out effect on hover */
+.post img:hover,
+.post video:hover {
+  opacity: 0.5; /* Fade out to 50% opacity */
 }
 
 /* Styles for profile row */
@@ -29,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow-x: hidden;/* Hide overflow content */
+  overflow-x: hidden; /* Hide overflow content */
 }
 
 .profile-row .post {
@@ -91,12 +96,11 @@ html, body {
   margin: 0;
 }
 
-.postsize{
-  width: 100px; 
-  height: 100px; 
-  border-radius: 10%; 
+.postsize {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
   border: 2px solid white;
-
 }
 
 .post-header {
@@ -122,6 +126,44 @@ html, body {
   transform: scale(2.1);
 }
 
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .profile-row .post {
+    flex: 0 0 calc(50% - 10px); /* 2 posts per row on medium screens */
+  }
 
+  .post-home {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
 
+  .home-posts {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
+}
 
+@media (max-width: 576px) {
+  .profile-row .post {
+    flex: 0 0 calc(100% - 10px); /* 1 post per row on small screens */
+  }
+
+  .post-home {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .home-posts {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .nav-buttons {
+    bottom: 10px; /* Adjust bottom space for smaller screens */
+    gap: 5px; /* Reduce gap between buttons */
+  }
+
+  .nav-button {
+    font-size: 18px; /* Reduce font size for buttons */
+  }
+}

@@ -3,8 +3,10 @@ import { PostService } from '../service/post.service';
 import { UserService } from '../service/user.service';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ViewPostComponent } from '../view-post/view-post.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-list',
@@ -19,7 +21,12 @@ export class PostListComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   private routeSubscription!: Subscription;
 
-  constructor(private postService: PostService, private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private postService: PostService, 
+    private userService: UserService, 
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.routeSubscription = this.route.url.subscribe((url: UrlSegment[]) => {
@@ -108,5 +115,19 @@ export class PostListComponent implements OnInit, OnDestroy {
     if (this.posts.length > 0) {
       this.currentIndex = (this.currentIndex - 1 + this.posts.length) % this.posts.length;
     }
+  }
+
+  viewPost(post: Post): void {
+    const dialogRef = this.dialog.open(ViewPostComponent, {
+      width: 'auto',  // Let the width be determined by the content
+      height: 'auto', // Let the height be determined by the content
+      maxWidth: '90vw', // Ensure the dialog doesn’t exceed 90% of the viewport width
+      maxHeight: '90vh', // Ensure the dialog doesn’t exceed 90% of the viewport height
+      data: { post: post }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

@@ -1,0 +1,57 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Ensure the button can be positioned absolutely */
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it is above other content */
+  }
+  
+  .media-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 40px; /* Ensure there's space for the button */
+  }
+  
+  .media {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .post-image,
+  .post-video {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .comments-container {
+    flex: 1;
+    max-width: 300px;
+    overflow-y: auto;
+  }
+  
+  .comments-container h3 {
+    margin-top: 0;
+  }
+  
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  

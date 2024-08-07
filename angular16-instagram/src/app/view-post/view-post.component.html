@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Post Details</h1>
+<div mat-dialog-content class="dialog-content">
+  <button mat-icon-button class="delete-button" (click)="deletePost()">
+    <h4>delete</h4>
+  </button>
+  <div class="media-container">
+    <div *ngIf="data.post.imageUrl" class="media">
+      <img [src]="'data:image/png;base64,' + data.post.imageUrl" alt="Post Image" class="post-image">
+    </div>
+    <div *ngIf="data.post.videoUrl" class="media">
+      <video controls class="post-video">
+        <source [src]="'data:video/mp4;base64,' + data.post.videoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="comments-container">
+      <h3>Comments</h3>
+      <div class="comments">
+        <!-- Replace with your comment list -->
+        <p *ngFor="let comment of data.post.comments">{{ comment }}</p>
+      </div>
+      <textarea [(ngModel)]="newComment" placeholder="Add a comment..."></textarea>
+      <button mat-button (click)="addComment()">Add Comment</button>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</div>
