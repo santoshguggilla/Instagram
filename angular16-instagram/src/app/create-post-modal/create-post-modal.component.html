@@ -1,36 +1,38 @@
-<button mat-icon-button (click)="closeDialog()" class="close-icon">
-  <mat-icon>close</mat-icon>
-</button>
-<div class="modal-container">
-
-  
-  <!-- Left Side: Title, Input Field, Image Preview -->
-  <div class="left-side">
+<div class="modal-wrapper">
+  <div class="header">
     <h2 mat-dialog-title>Create Post</h2>
-    <form>
-      <div class="form-group">
-        <label for="file">Upload Image</label>
-        <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
-      </div>
-      <!-- Image Preview -->
-      <div *ngIf="selectedFile" class="preview-caption-container">
-        <img [src]="imagePreview" alt="Image Preview" class="image-preview">
-        
-      </div>
-    </form>
+    <button mat-icon-button (click)="closeDialog()" class="close-icon">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
-  
-  <!-- Right Side: Buttons -->
-  <div class="right-side">
-    <button *ngIf="!showCaptionInput" mat-button color="primary" (click)="onNext()">Next</button>
-    <button *ngIf="showCaptionInput" mat-button color="primary" (click)="onPost(caption)">Post</button>
-    <!-- Caption Input -->
-    <div *ngIf="showCaptionInput" class="caption-container">
-      <mat-form-field appearance="fill">
-        <mat-label>Caption</mat-label>
-        <textarea matInput [(ngModel)]="caption"></textarea>
-      </mat-form-field>
+  <div class="modal-container">
+    <div class="left-side">
+      <form>
+        <div class="form-group">
+          <!-- <label for="file">Upload File</label> -->
+          <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
+        </div>
+        <div *ngIf="imagePreview" class="preview-container">
+          <img [src]="imagePreview" alt="Image Preview" class="image-preview">
+        </div>
+        <div *ngIf="videoPreview" class="preview-container">
+          <video controls>
+            <source [src]="videoPreview" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </form>
     </div>
-   
+    <div class="right-side">
+      <div class="button-container">
+        <button *ngIf="showCaptionInput" mat-button class="postbtn" (click)="onPost(caption)" [disabled]="!isInputProvided">Post</button>
+      </div>
+      <div *ngIf="showCaptionInput" class="caption-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Caption</mat-label>
+          <textarea matInput [(ngModel)]="caption"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 </div>

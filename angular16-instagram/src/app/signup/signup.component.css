@@ -1,79 +1,104 @@
-.signup-container{
-    max-width: 350px;
-    height: 100%;
-    margin: 0 auto;
-    text-align: center;
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    padding: 40px;
-    margin-bottom: 10px;
+/* Ensure the entire container takes up the full viewport height */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrolling */
+  height: 100%;
+}
+.main {
+  display: flex;
+  justify-content: center; /* Centers the container horizontally */
+  align-items: center;    /* Centers the container vertically */
+  height: 100vh;          /* Ensures the main div takes the full height of the viewport */
 }
 
-.form-group{
-    margin-bottom: 10px;
+/* Center the signup-container vertically and horizontally */
+.signup-container {
+  height: 90%;
+}
+
+.signup-form {
+  max-width: 350px;
+  height: 90%;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically */
+  box-sizing: border-box;
+}
+
+.signin-link {
+  max-width: 350px;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  height: auto;
+  margin-top: 10px;
+  padding: 12px;
+  text-align: center; /* Aligns the text in the center */
+}
+
+.signin-link a {
+  color: #3897f0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 10px;
 }
 
 .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #dbdbdb;
-    border-radius: 3px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0e71ce;
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 3px;
-    margin-top: 10px;
-  }
+  width: 100%;
+  padding: 10px;
+  background-color: #0e71ce;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+}
 
-  button.login-facebook {
-    background-color: #1877F2;
-    border-radius: 10px;
-  }
-  
-  .divider {
-    position: relative;
-    margin: 20px 0;
-    text-align: center;
-  }
+button.login-facebook {
+  background-color: #1877F2;
+  border-radius: 10px;
+}
 
-  .divider::before, .divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 45%;
-    height: 1px;
-    background-color: #dbdbdb;
-  }
+.login-facebook {
+  margin-top: -9px;
+  margin-bottom: 5px;
+}
 
-  .divider::before {
-    left: 0;
-  }
+.divider {
+  position: relative;
+  /* margin: 20px 0; */
+  text-align: center;
+}
 
-  .divider::after {
-    right: 0;
-  }
+.divider::before, .divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background-color: #dbdbdb;
+}
 
-  .signup-link {
-    max-width: 350px;
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    /* padding: 20px; */
-    font-size: 25px;
-    height: 1px;
-    
-  }
+.divider::before {
+  left: 0;
+}
 
-  .signup-link a {
-    color: #3897f0;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-
+.divider::after {
+  right: 0;
+}

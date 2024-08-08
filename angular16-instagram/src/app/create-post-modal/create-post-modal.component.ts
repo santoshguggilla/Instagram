@@ -5,7 +5,7 @@ import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { Post } from '../models/post.model';
-import { Location } from '@angular/common';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-create-post-modal',
@@ -17,6 +17,8 @@ export class CreatePostModalComponent implements OnInit {
   user: User | null = null;
   post: Post | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  videoPreview: string | ArrayBuffer | null = null; // Add this line
+  isInputProvided = false;  // Initially set to false
   showCaptionInput: boolean = false;
   caption: string = '';
 
@@ -25,6 +27,7 @@ export class CreatePostModalComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     public dialog: MatDialog,
+    
   ) {}
 
   ngOnInit(): void {
@@ -36,14 +39,28 @@ export class CreatePostModalComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    
     if (this.selectedFile) {
       const reader = new FileReader();
+      this.isInputProvided = true;  // Set to true when a file is selected
       reader.onload = () => {
-        this.imagePreview = reader.result;
+        if (reader.result) { // Ensure reader.result is not null
+          // Check if the selected file is an image or video
+          if (this.selectedFile!.type.startsWith('image/')) {
+            this.imagePreview = reader.result as string; // Type assertion to string
+            this.videoPreview = null; // Clear video preview
+          } else if (this.selectedFile!.type.startsWith('video/')) {
+            this.videoPreview = reader.result as string; // Type assertion to string
+            this.imagePreview = null; // Clear image preview
+          }
+          this.showCaptionInput = true; // Show the caption input after file is selected
+        }
       };
+      
       reader.readAsDataURL(this.selectedFile);
     }
   }
+  
 
   onNext() {
     this.showCaptionInput = true;
@@ -70,6 +87,19 @@ export class CreatePostModalComponent implements OnInit {
     window.location.reload();
   }
   closeDialog(): void {
-    this.dialog.closeAll();
+    // this.dialog.closeAll();
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '300px',
+      maxWidth: '90vw',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'discard') {
+        this.dialog.closeAll(); // Close the modal if 'discard' is selected
+      }
+      // Do nothing if 'cancel' is selected
+    });
+  
   }
 }

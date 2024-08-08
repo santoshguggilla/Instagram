@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { User } from '../models/user.model';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -22,10 +23,30 @@ export class LoginformComponent implements OnInit{
   currentIndex: number = 0;
   intervalId: any;
 
+  user: User = {
+    email: '',
+    password: '',
+  };
+  constructor(
+      private route: ActivatedRoute,
+      private http: HttpClient,
+      private router: Router,
+      private authService:AuthService,
+    ) {}
+
   ngOnInit(): void {
     this.startImageRotation();
-  }
 
+    // Check for the username query parameter and show the alert
+    this.route.queryParams.subscribe(params => {
+      const username = params['username'];
+      if (username) {
+        alert(`Registration successful! Welcome to Instagram, ${username}`);
+           // Remove the query parameter from the URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+  }
   startImageRotation(): void {
     this.intervalId = setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -37,13 +58,9 @@ export class LoginformComponent implements OnInit{
       clearInterval(this.intervalId);
     }
   }
-  user :User= {
-    email: '',
-    password: '',
-    
-  };
+  
 
-  constructor(private http: HttpClient, private router: Router, private authService:AuthService) {}
+ 
   
 
   onSubmit() {

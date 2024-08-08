@@ -1,55 +1,107 @@
+/* Ensure the overall modal container is a flex container in column direction */
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 90vw; /* Adjust as needed to fit within the viewport */
+  max-height: 80vh; /* Adjust height to fit within the viewport */
+  overflow: hidden; /* Hide overflow to prevent scrolling */
+  position: relative; /* For positioning the close button */
+}
+
+/* Style the header */
+.header {
+  display: flex;
+  max-height: 10.5vh;
+  justify-content: space-between; /* Spaces out the title and close button */
+  align-items: center; /* Vertically aligns the title and button */
+  padding: 10px; /* Adds padding around the header */
+  background-color: #4A4A4A; /* Background color for the header */
+  border-bottom: 1px solid #ddd; /* Adds a border below the header */
+}
+
+/* Style the content container */
 .modal-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 90vw; /* Adjust as needed to fit within the viewport */
-    max-height: 80vh; /* Adjust height to fit within the viewport */
-    overflow: hidden; /* Hide overflow to prevent scrolling */
-  }
-  
-  .left-side {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    padding-right: 20px; /* Space between left and right side */
-    max-width: 100%;
-  }
+  display: flex;
+  flex: 1; /* Allows the container to take up the remaining space */
+  justify-content: space-between;
+  padding: 10px 20px; /* Padding for content */
+  overflow: auto; /* Allows scrolling if content overflows */
+}
 
-  .form-control{
-    width: 255px;
-  }
-  
-  .right-side {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    max-width: 100%;
-  }
-  
-  .preview-caption-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  
-  .image-preview {
-    max-width: 250px; /* Adjust to prevent horizontal overflow */
-    max-height: 250px;
-    width: 100%; /* Ensure image scales within container */
-  }
-  
-  .caption-container {
-    flex-grow: 1;
-  }
-  
-  .close-icon {
-    align-self: self-end;
-  }
+/* Left side styles */
+.left-side {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px; /* Space between left and right side */
+}
 
-  .image-center{
-    opacity: 0.6;
-    transition: 0.3s;
-  }
-  
-  
+.form-control {
+  width: 255px;
+}
+
+.image-preview,
+video {
+  max-width: 250px; /* Adjust to prevent horizontal overflow */
+  max-height: 250px;
+  width: 100%; /* Ensure image and video scale within container */
+}
+
+.preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.caption-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.postbtn {
+  background-color: transparent;
+  border: none;
+  color: #b4f7c5;
+}
+
+.postbtn:hover {
+  color: #09f745;
+  transform: scale(1.1);
+  transition: transform 0.2s, color 0.2s;
+  border: 1px solid #6ff390;
+  border-radius: 5px;
+}
+
+/* Right side styles */
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.close-icon {
+  background-color: transparent;
+  border: none;
+  color: rgb(243, 122, 122);
+}
+
+.close-icon:hover {
+  color: rgb(255, 0, 0);
+  transform: scale(1.1);
+  transition: transform 0.2s, color 0.2s;
+  border: 1px solid rgb(240, 47, 47);
+  border-radius: 50%;
+}
+
+hr {
+  color: #faf6f6;
+}
