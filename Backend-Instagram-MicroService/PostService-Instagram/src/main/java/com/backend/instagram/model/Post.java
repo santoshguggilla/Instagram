@@ -17,7 +17,7 @@ public class Post {
 	@Column(name = "image_url", length = 100000)
 	private String imageUrl;
 	@Lob
-	@Column(name = "video_url", length = 1000000)
+	@Column(name = "video_url", length = 100000000)
 	private String videoUrl;
 	private String mediaType;
 	public String getVideoUrl() {
