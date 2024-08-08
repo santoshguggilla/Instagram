@@ -6,14 +6,14 @@
       </div>
       <div class="post-content" *ngIf="post.imageUrl" (click)="viewPost(post)">
         <img [src]="'data:image/png;base64,' + post.imageUrl" alt="Post Image" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}" style="transition: transform 0.3s ease; transform: scale(2.1);">
-        <p>{{ post.content }}</p>
+        
       </div>
       <div class="post-content" *ngIf="post.videoUrl" (click)="viewPost(post)">
         <video controls>
           <source [src]="'data:video/mp4;base64,' + post.videoUrl" type="video/mp4" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}">
           Your browser does not support the video tag.
         </video>
-        <p>{{ post.content }}</p>
+        
       </div>
     </div>
   </div>
@@ -42,18 +42,18 @@
             <p>{{ visiblePost?.content }}</p>
           </div>
           <div class="post-content post-home" *ngIf="visiblePost?.videoUrl">
-            <video controls>
-              <source [src]="'data:video/mp4;base64,' + visiblePost?.videoUrl" type="video/mp4" class="home-posts">
+            <video controls class="home-posts">
+              <source [src]="'data:video/mp4;base64,' + visiblePost?.videoUrl" type="video/mp4">
             </video>
             <p>{{ visiblePost?.content }}</p>
           </div>
           <div class="post-footer">
-            <p>descrptinf bm,</p> <!-- Post description at the bottom -->
+            <p>description</p> <!-- Post description at the bottom -->
           </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-3" style="position: relative;">
       <h3>brown</h3>
       <div class="nav-buttons">
         <button class="nav-button" (click)="previousPost()">&#8593;</button> <!-- Up arrow for previous -->

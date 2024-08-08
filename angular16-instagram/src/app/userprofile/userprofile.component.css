@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap; /* Add flex-wrap to handle smaller screens */
 }
 
 .profile-container {
@@ -81,7 +82,55 @@
 .inner-block:not(:last-child) {
     margin-right: 10px; /* Optional: add space between inner blocks */
 }
-/* .postlist{
-    margin-top: 70px;
-    margin-left: 150px;
-} */
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center align items */
+    }
+
+    .small-block {
+        margin-top: 20px; /* Adjust top margin for smaller screens */
+        margin-left: 0; /* Remove left margin for smaller screens */
+    }
+
+    .large-block {
+        width: 100%; /* Full width for smaller screens */
+        margin-left: 0; /* Remove left margin for smaller screens */
+    }
+
+    .profile-details {
+        align-items: center; /* Center align items on small screens */
+    }
+
+    .userdetails-block {
+        flex-direction: column; /* Stack inner blocks vertically on small screens */
+    }
+
+    .inner-block:not(:last-child) {
+        margin-right: 0; /* Remove right margin for stacked blocks */
+        margin-bottom: 10px; /* Add bottom margin for stacked blocks */
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container img.img-circle {
+        width: 100px; /* Smaller profile image for very small screens */
+        height: 100px; /* Smaller profile image for very small screens */
+    }
+
+    .small-block {
+        width: 100px; /* Smaller block size for very small screens */
+        height: 100px; /* Smaller block size for very small screens */
+        margin-top: 10px; /* Adjust top margin for very small screens */
+    }
+
+    .large-block {
+        width: 100%; /* Full width for very small screens */
+    }
+
+    .inner-block {
+        padding: 5px; /* Smaller padding for very small screens */
+    }
+}

@@ -10,11 +10,11 @@ import { Observable, Subject } from 'rxjs';
 export class ChatService {
   private stompClient: Client;
   private messageSubject = new Subject<string>();
-  private baseUrl = 'http://10.0.0.69:8080/api/chat';
+  private baseUrl = 'http://10.0.0.5:8080/api/chat';
 
   constructor(private http: HttpClient) {
     this.stompClient = new Client({
-      webSocketFactory: () => new SockJS('http://10.0.0.69:8080/ws'),
+      webSocketFactory: () => new SockJS('http://10.0.0.5:8080/ws'),
       reconnectDelay: 5000,
       debug: (str) => {
         console.log(str);
