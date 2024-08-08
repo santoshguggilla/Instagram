@@ -31,6 +31,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CreatePostPreviewComponent } from './create-post-preview/create-post-preview.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { MatIconModule } from '@angular/material/icon';
     ProfileUploadComponent,
     RecommandedComponent,
     UserStatusComponent,
-    ViewPostComponent
+    ViewPostComponent,
+    CreatePostPreviewComponent,
+    ConfirmationDialogComponent
  
   ],
   imports: [

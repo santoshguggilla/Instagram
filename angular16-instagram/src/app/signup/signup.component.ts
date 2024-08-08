@@ -19,7 +19,8 @@ export class SignupComponent {
   };
 
 
-  constructor(private http: HttpClient, private router: Router,private userService:UserService) {}
+  constructor(private http: HttpClient, private router: Router,
+    private userService:UserService) {}
 
   onSubmit() {
     this.userService.saveUser(this.user)
@@ -27,7 +28,7 @@ export class SignupComponent {
         response => {
           console.log('Signup successful', response);
           // Optionally navigate to another page on success
-          this.router.navigate(['/']);
+          this.router.navigate(['/'], { queryParams: { username: this.user.userName } });
         },
         error => {
           if (error.error.text === 'ALREADY_REPORTED') {

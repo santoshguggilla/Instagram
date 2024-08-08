@@ -1,40 +1,9 @@
-.preview-container {
-    position: relative;
-    text-align: center;
-  }
+.main{
+  width: 100100%;
+  height: 100%;
   
-  .img-preview-container {
-    background-color: transparent;
-    padding: 10px;
-    border: none;
-    box-shadow: none;
-  }
-  
-  .img-preview {
-    max-width: 100%;
-    max-height: 500px;
-    display: inline-block;
-  }
-  
-  .btn-next, .btn-share {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #007bff; /* Customize button color */
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .btn-next {
-    right: 90px; /* Adjust position if needed */
-  }
-  
-  textarea {
-    width: 100%;
-    height: 100px;
-    margin-top: 10px;
-  }
-  
+}
+.child{
+  background-color: transparent;
+  height: 75%;
+}

@@ -1,11 +1,12 @@
+<div class="main">
 <div class="signup-container ">
+  <div class="signup-form">
   <div style="height: 50%;">
     <img style="height: 70px;" src="/assets/instagram-logo-name.png">
-    <h2>Sign up to see photos and videos from your friends.</h2>
+    <h4>Sign up to see photos and videos from your friends.</h4>
     <button type="button" class="login-facebook">Log in with Facebook</button>
     <div class="divider">OR</div>
-</div>
-    <div>
+  </div>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         
@@ -26,9 +27,10 @@
       
       <button type="submit">Sign Up</button>
     </form>
+  </div>
+<div class="signin-link">
+  Have an account? <a routerLink="/">Login</a>
 </div>
   </div>
-  <div class="signup-container signup-link">
-    Have an account? <a routerLink="/">Login</a>
-  </div>
+</div>
   
