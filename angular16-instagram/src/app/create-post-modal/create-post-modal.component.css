@@ -1,0 +1,55 @@
+.modal-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 90vw; /* Adjust as needed to fit within the viewport */
+    max-height: 80vh; /* Adjust height to fit within the viewport */
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+  }
+  
+  .left-side {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px; /* Space between left and right side */
+    max-width: 100%;
+  }
+
+  .form-control{
+    width: 255px;
+  }
+  
+  .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .preview-caption-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .image-preview {
+    max-width: 250px; /* Adjust to prevent horizontal overflow */
+    max-height: 250px;
+    width: 100%; /* Ensure image scales within container */
+  }
+  
+  .caption-container {
+    flex-grow: 1;
+  }
+  
+  .close-icon {
+    align-self: self-end;
+  }
+
+  .image-center{
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+  
+  

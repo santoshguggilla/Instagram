@@ -1,16 +1,74 @@
-.login-container{
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrolling */
+  height: 100%;
+}
+.main {
+  display: flex;
+  justify-content: center; /* Centers the container horizontally */
+  align-items: center;    /* Centers the container vertically */
+  height: 100vh;          /* Ensures the main div takes the full height of the viewport */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Aligns child1 and child2 side by side */
+  padding: 20px;
+  width: 60%;  /* Sets the width of the container to 85% */
+  align-items: center;
+  box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+.child1, .child2 {
+  width: 48%;  /* Adjusts width to allow space between child1 and child2 */
+  height: 555px;  /* Adjust height as needed */
+  /* background-color: #00376b; */
+}
+
+.child1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.image-slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  object-fit: contain; /* Ensures the image fits inside the container without cropping */  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.image-slider img.active {
+  opacity: 1;
+}
+
+
+/* ---------------------------- */
+/* .login-container{
     max-width: 350px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
 
-}
+} */
 
 .login-form {
     background: #fff;
-    border: 1px solid #dbdbdb;
+    border: 1px solid gray;
     padding: 40px;
     margin-bottom: 10px;
+    border-radius: 3px;
+
   }
 
   .form-group {
@@ -34,11 +92,29 @@
     border-radius: 3px;
     margin-top: 10px;
   }
-
-  button.login-facebook {
-    background-color: #4267b2;
+  .links-container {
+    display: flex;
+    flex-direction: column; /* Stacks the links vertically */
+    align-items: center; /* Centers links horizontally */
+    margin-top: 20px; /* Adds space above the links if needed */
   }
-  
+  .login-facebook,
+  .forgot-password {
+  margin: 5px 0; /* Adds vertical spacing between the links */
+}
+.login-facebook {
+  display: flex; /* Uses flexbox to align items inside the link */
+  align-items: center; /* Centers items vertically within the link */
+  text-decoration: none;
+  font-weight: 450;
+  color: #3897f0; /* Adjust color if needed */
+  margin: 5px 0; /* Adds vertical spacing between the links */
+}
+.facebook-logo {
+  width: 20px; /* Adjust the width of the Facebook logo */
+  height: auto; /* Keeps the aspect ratio of the logo */
+  margin-right: 8px; /* Adds space between the logo and the text */
+}
   .divider {
     position: relative;
     margin: 20px 0;
@@ -62,20 +138,77 @@
   }
 
   .forgot-password {
-    display: block;
-    margin-top: 20px;
+    /* display: block;
+    margin-top: 20px; */
     color: #00376b;
     text-decoration: none;
   }
 
   .signup-link {
+    display: flex; /* Uses flexbox to align items inside the link */
+    flex-direction: column; /* Stacks the links vertically */
+    align-items: center; /* Centers items vertically within the link */ 
     background: #fff;
-    border: 1px solid #dbdbdb;
-    padding: 20px;
+    border: 0.2px solid gray;
+    padding: 12.222222222222px;
+    margin-bottom: 0px;
+    border-radius: 3px;
   }
+ 
 
   .signup-link a {
     color: #3897f0;
     text-decoration: none;
     font-weight: bold;
   }
+  /* Other styles remain unchanged */
+
+.image-center {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+}
+
+.image-center img {
+  max-width: 100%; /* Ensures the image doesn't exceed the container width */
+  height: 90px; /* Maintains the aspect ratio */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .child1, .child2 {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .child1 {
+    display: none; /* Hides child1 on small screens */
+  }
+  
+  .login-form {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.image-center {
+  margin-top: 11px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.image-center img {
+  transition: transform 0.3s; /* Add transition to the img element */
+}
+
+.image-center:hover {
+  opacity: 1;
+}
+
+.image-center:hover img {
+  transform: scale(1.1); /* Zoom in effect on the image */
+}

@@ -22,14 +22,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CreatePostPreviewComponent } from './create-post-preview/create-post-preview.component';
 import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
 import { ProfileUploadComponent } from './profile-upload/profile-upload.component';
 import { MatCardModule } from '@angular/material/card';
 import { RecommandedComponent } from './recommanded/recommanded.component';
 import { UserStatusComponent } from './user-status/user-status.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ViewPostComponent } from './view-post/view-post.component';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -48,13 +49,11 @@ import { ViewPostComponent } from './view-post/view-post.component';
     CreatePostModalComponent,
     SidebarComponent,
     DialogComponent,
-    CreatePostPreviewComponent,
     ThemeToggleComponent,
     ProfileUploadComponent,
     RecommandedComponent,
     UserStatusComponent,
-    ViewPostComponent,
-
+    ViewPostComponent
  
   ],
   imports: [
@@ -66,7 +65,10 @@ import { ViewPostComponent } from './view-post/view-post.component';
     ReactiveFormsModule, 
     BrowserAnimationsModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

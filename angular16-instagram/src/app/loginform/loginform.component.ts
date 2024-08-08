@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -10,9 +10,33 @@ import { User } from '../models/user.model';
   templateUrl: './loginform.component.html',
   styleUrls: ['./loginform.component.css']
 })
-export class LoginformComponent {
+export class LoginformComponent implements OnInit{
   
+  images: string[] = [
+    '../../assets/images/chat.png',
+    '../../assets/images/ima.jpg',
+    '../../assets/images/png.png',
+    '../../assets/images/png1.png',
+    '../../assets/images/google.png',
+  ];
+  currentIndex: number = 0;
+  intervalId: any;
 
+  ngOnInit(): void {
+    this.startImageRotation();
+  }
+
+  startImageRotation(): void {
+    this.intervalId = setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    }, 3000); // Change image every 3 seconds
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
   user :User= {
     email: '',
     password: '',
@@ -20,6 +44,7 @@ export class LoginformComponent {
   };
 
   constructor(private http: HttpClient, private router: Router, private authService:AuthService) {}
+  
 
   onSubmit() {
     this.authService.login(this.user).subscribe(
