@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
  
-  private apiUrl: string = 'http://10.0.0.42:8080/api';
+  private apiUrl: string = 'http://10.0.0.69:8080/api';
   private user: User | null = null;
 
   constructor(private http: HttpClient, private discoveryService: DiscoveryService,private router:Router) {}

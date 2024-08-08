@@ -1,1 +1,18 @@
-<p>create-post-preview works!</p>
+<div class="preview-container">
+    <!-- Add a "Next" button -->
+    <button class="btn-next" *ngIf="!showDescription" (click)="showDescriptionField()">Next</button>
+    
+    <!-- Add a "Share" button -->
+    <button class="btn-share" (click)="sharePost()">Share</button>
+  
+    <!-- Display image preview -->
+    <div class="img-preview-container" *ngIf="imageUrl">
+      <img [src]="imageUrl" alt="Image Preview" class="img-preview">
+    </div>
+  
+    <!-- Description field -->
+    <div *ngIf="showDescription">
+      <textarea [(ngModel)]="description" placeholder="Write a description..."></textarea>
+    </div>
+  </div>
+  

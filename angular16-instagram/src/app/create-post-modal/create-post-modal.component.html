@@ -1,13 +1,36 @@
-<h2 mat-dialog-title>Create Post</h2>
-<div mat-dialog-content>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="file">Upload Image</label>
-      <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
+<button mat-icon-button (click)="closeDialog()" class="close-icon">
+  <mat-icon>close</mat-icon>
+</button>
+<div class="modal-container">
+
+  
+  <!-- Left Side: Title, Input Field, Image Preview -->
+  <div class="left-side">
+    <h2 mat-dialog-title>Create Post</h2>
+    <form>
+      <div class="form-group">
+        <label for="file">Upload Image</label>
+        <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+      <!-- Image Preview -->
+      <div *ngIf="selectedFile" class="preview-caption-container">
+        <img [src]="imagePreview" alt="Image Preview" class="image-preview">
+        
+      </div>
+    </form>
+  </div>
+  
+  <!-- Right Side: Buttons -->
+  <div class="right-side">
+    <button *ngIf="!showCaptionInput" mat-button color="primary" (click)="onNext()">Next</button>
+    <button *ngIf="showCaptionInput" mat-button color="primary" (click)="onPost(caption)">Post</button>
+    <!-- Caption Input -->
+    <div *ngIf="showCaptionInput" class="caption-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Caption</mat-label>
+        <textarea matInput [(ngModel)]="caption"></textarea>
+      </mat-form-field>
     </div>
-    <button type="submit" mat-button color="primary">Submit</button>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">Close</button>
+   
+  </div>
 </div>

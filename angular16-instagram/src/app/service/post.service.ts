@@ -9,7 +9,7 @@ import { Post } from '../models/post.model';
 })
 export class PostService {
   
-  private postUrl: string="http://10.0.0.42:8082/posts";
+  private postUrl: string="http://10.0.0.69:8082/posts";
   
   constructor(private http: HttpClient) {
     
@@ -23,9 +23,11 @@ export class PostService {
     return this.http.get<Post[]>(`${this.postUrl}/posts`);
   }
   
-  createPost(userId: string, file: File): Observable<Post> {
-    const formData: FormData = new FormData();
+  createPost(userId: string, file: File, caption: string): Observable<Post> {
+    const formData = new FormData();
     formData.append('file', file);
+    formData.append('descrption', caption); // Add caption to form data
+
     return this.http.post<Post>(`${this.postUrl}/createpost/${userId}`, formData);
   }
   

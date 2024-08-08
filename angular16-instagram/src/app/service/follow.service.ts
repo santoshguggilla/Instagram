@@ -10,7 +10,7 @@ export class FollowService {
  
  
 
-  private followUrl: string="http://10.0.0.42:8083/follow";
+  private followUrl: string="http://10.0.0.69:8083/follow";
 
   constructor( private http:HttpClient){}
   

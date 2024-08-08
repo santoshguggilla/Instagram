@@ -14,7 +14,7 @@ public class Post {
 	private int id;
 	private String content;
 	@Lob
-	@Column(name = "image_url", length = 1000)
+	@Column(name = "image_url", length = 100000)
 	private String imageUrl;
 	@Lob
 	@Column(name = "video_url", length = 1000000)
