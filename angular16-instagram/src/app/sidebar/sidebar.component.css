@@ -62,7 +62,7 @@ h1{
   transform: translate(-50%, -50%);
   width: 300%;
   height: 300%;
-  background: radial-gradient(circle, rgba(182, 3, 3, 0.5), rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(50, 173, 50, 0.5), rgba(147, 223, 233, 0) 70%);
   transition: opacity 0.3s ease;
   opacity: 0;
 }
@@ -72,7 +72,7 @@ h1{
 }
 
 .unique-button:hover, .post:hover {
-  background-color: #fa0505;
+  background-color: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
   color: black;
   font-weight: bold;
 }

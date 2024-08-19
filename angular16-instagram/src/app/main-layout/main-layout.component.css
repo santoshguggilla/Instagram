@@ -1,11 +1,13 @@
 /* main-layout.component.css */
 html, body {
-    height: 100%;
+    height: 100dvh;
     margin: 0;
+    width: 100dvw;
   }
   
   .container-fluid {
-    height: 100vh; /* Full viewport height */
+    height: 100%; /* Full viewport height */
+    
   }
   
   .row {
@@ -25,3 +27,24 @@ html, body {
     padding: 20px; /* Optional padding */
   }
   
+/*----------- Custom scrollbar styling-----------*/
+/* Custom scrollbar styling */
+.main-content::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  border-radius: 10px; /* Round scrollbar */
+  border: 2px solid #f1f1f1; /* Add space around scrollbar */
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+}
+
+/*----------- Custom scrollbar styling-----------*/
