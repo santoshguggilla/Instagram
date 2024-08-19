@@ -1,4 +1,4 @@
-package com.backend.instagram.model;
+package com.backend.Instagram.model;
 
 import java.time.LocalDateTime;
 
@@ -6,35 +6,35 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class Follow {
+@Table(name="like")
+public class Like {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int followerId;
-	private int followeeId;
+	private int userId;
+	private int postId;
 	private LocalDateTime updatedAt;
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getFollowerId() {
-		return followerId;
+	public int getUserId() {
+		return userId;
 	}
-	public void setFollowerId(int followerId) {
-		this.followerId = followerId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public int getFolloweeId() {
-		return followeeId;
+	public int getPostId() {
+		return postId;
 	}
-	public void setFolloweeId(int followeeId) {
-		this.followeeId = followeeId;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
@@ -42,5 +42,4 @@ public class Follow {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
 }
