@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DiscoveryService {
-  private eurekaUrl = 'http://10.0.0.69:8761/eureka/apps'; // Replace with your Eureka server URL
+  private eurekaUrl = 'http://10.0.0.36:8761/eureka/apps'; // Replace with your Eureka server URL
 
   constructor(private http: HttpClient) {}
 

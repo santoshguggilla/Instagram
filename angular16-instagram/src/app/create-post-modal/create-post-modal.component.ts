@@ -10,7 +10,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 @Component({
   selector: 'app-create-post-modal',
   templateUrl: './create-post-modal.component.html',
-  styleUrls: ['./create-post-modal.component.css']
+  styleUrls: ['./create-post-modal.component.css'],
+  
 })
 export class CreatePostModalComponent implements OnInit {
   selectedFile: File | null = null;

@@ -30,7 +30,7 @@ h1{
 }
 
 .profile-container img.img-circle:hover {
-  transform: scale(2.1);
+  transform: scale(1.1);
 }
 
 .sidebar .button-container {

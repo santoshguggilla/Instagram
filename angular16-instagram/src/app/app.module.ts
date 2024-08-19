@@ -1,3 +1,4 @@
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -33,7 +34,7 @@ import { ViewPostComponent } from './view-post/view-post.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CreatePostPreviewComponent } from './create-post-preview/create-post-preview.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,9 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

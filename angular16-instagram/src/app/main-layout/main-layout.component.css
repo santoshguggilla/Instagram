@@ -1,0 +1,27 @@
+/* main-layout.component.css */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container-fluid {
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .row {
+    height: 100%;
+  }
+  
+  .sidebar {
+    position: sticky; /* Makes the sidebar stick to the viewport */
+    top: 0; /* Keeps it at the top */
+    height: 100vh; /* Full viewport height */
+    overflow: auto; /* Allows scrolling if needed */
+  }
+  
+  .main-content {
+    height: 100%; /* Full height of the row */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 20px; /* Optional padding */
+  }
+  

@@ -102,3 +102,6 @@ button.login-facebook {
 .divider::after {
   right: 0;
 }
+.email-invalid {
+  border: 1px solid red;
+}

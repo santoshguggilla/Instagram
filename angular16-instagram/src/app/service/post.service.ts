@@ -9,7 +9,7 @@ import { Post } from '../models/post.model';
 })
 export class PostService {
   
-  private postUrl: string="http://10.0.0.69:8082/posts";
+  private postUrl: string="http://10.0.0.36:8082/posts";
   
   constructor(private http: HttpClient) {
     
@@ -22,7 +22,15 @@ export class PostService {
   getAllPosts():Observable<Post[]>{
     return this.http.get<Post[]>(`${this.postUrl}/posts`);
   }
+  getMorePosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.postUrl}/posts/more`);
+  }
+
+  getPreviousPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.postUrl}/posts/previous`);
+  }
   
+ 
   createPost(userId: string, file: File, caption: string): Observable<Post> {
     const formData = new FormData();
     formData.append('file', file);

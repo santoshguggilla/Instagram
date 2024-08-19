@@ -18,11 +18,32 @@ export class SignupComponent {
     password: ''
   };
 
+  emailExists: boolean = false; // Track if email exists
 
   constructor(private http: HttpClient, private router: Router,
     private userService:UserService) {}
 
+    checkEmailExists() {
+      // Ensure user.userName is defined and not empty
+      if (this.user.userName) {
+        this.userService.getUserByUsername(this.user.userName).subscribe(
+          response => {
+            this.emailExists = response ? true : false;
+          },
+          error => {
+            console.error(error);
+          }
+        );
+      }
+      else {
+        this.emailExists = false;
+      }
+    }
   onSubmit() {
+    if (this.emailExists) {
+      alert("Email already registered");
+      return;
+    }
     this.userService.saveUser(this.user)
       .subscribe(
         response => {
@@ -40,5 +61,8 @@ export class SignupComponent {
           }
         }
       );
+  }
+  onEmailChange() {
+    this.checkEmailExists();
   }
 }

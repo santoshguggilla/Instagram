@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { PostService } from '../service/post.service';
 import { UserService } from '../service/user.service';
 import { Post } from '../models/post.model';
@@ -15,14 +15,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
-  users:User[]=[];
+  users: User[] = [];
   @Input() user: User | null = null;
   isProfilePage: boolean | undefined;
   currentIndex = 0;
   private routeSubscription!: Subscription;
+  private isLoading = false;
+  private isEndOfPosts = false;
 
-  constructor(private postService: PostService, 
-    private userService: UserService, 
+  constructor(
+    private postService: PostService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog
@@ -48,51 +51,40 @@ export class PostListComponent implements OnInit, OnDestroy {
   loadUserPosts(userId: string): void {
     this.postService.getPostsByUserId(userId).subscribe(posts => {
       this.posts = posts;
-      console.log(posts);
+      this.isEndOfPosts = false;
     });
   }
 
   loadAllPosts(): void {
-    this.postService.getAllPosts().subscribe(
-      posts => {
-        this.posts = posts;
-        console.log(posts);
-        this.getAllUsers();
-      },
-      error => {
-        console.error('Error loading posts:', error);
-      }
-    );
+    this.postService.getAllPosts().subscribe(posts => {
+      this.posts = posts;
+      this.getAllUsers();
+    });
   }
+
   getAllUsers(): void {
     const userIds = this.posts.map(post => post.userId);
-    this.userService.getAllUsersByPosts(userIds).subscribe(
-      users => {
-        this.users = users;
-        this.mapUsersToPosts();
-      },
-      error => {
-        console.error('Error loading users:', error);
-      }
-    );
+    this.userService.getAllUsersByPosts(userIds).subscribe(users => {
+      this.users = users;
+      this.mapUsersToPosts();
+    });
   }
 
   mapUsersToPosts(): void {
     const userMap = new Map<number, User>();
-    
-    // Ensure user.id is defined before using it
     this.users.forEach(user => {
       if (user.id !== undefined) {
         userMap.set(user.id, user);
       }
     });
-  
+
     this.posts.forEach(post => {
       post.user = userMap.get(post.userId);
     });
   }
 
-  // Method to chunk the posts array into smaller arrays
+
+ // Method to chunk the posts array into smaller arrays
   chunk(arr: any[], chunkSize: number): any[][] {
     const result: any[][] = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
@@ -100,32 +92,55 @@ export class PostListComponent implements OnInit, OnDestroy {
     }
     return result;
   }
-
-  get visiblePost(): Post | null {
+   get visiblePost(): Post | null {
     return this.posts[this.currentIndex] || null;
   }
+  
+  @HostListener('scroll', ['$event'])
+  onScroll(event: Event): void {
+    const target = event.target as HTMLElement;
+    const bottom = target.scrollHeight === target.scrollTop + target.clientHeight;
+    const top = target.scrollTop === 0;
+    if (bottom && !this.isEndOfPosts && !this.isLoading) {
+      this.loadMorePosts();
+    }
 
-  nextPost(): void {
-    if (this.posts.length > 0) {
-      this.currentIndex = (this.currentIndex + 1) % this.posts.length;
+    if (top && !this.isLoading) {
+      this.loadPreviousPosts();
     }
   }
 
-  previousPost(): void {
-    if (this.posts.length > 0) {
-      this.currentIndex = (this.currentIndex - 1 + this.posts.length) % this.posts.length;
-    }
+  loadMorePosts(): void {
+    this.isLoading = true;
+    this.postService.getMorePosts().subscribe(posts => {
+      if (posts.length > 0) {
+        this.posts = [...this.posts, ...posts];
+      } else {
+        this.isEndOfPosts = true;
+      }
+      this.isLoading = false;
+    });
+  }
+
+  loadPreviousPosts(): void {
+    this.isLoading = true;
+    this.postService.getPreviousPosts().subscribe(posts => {
+      if (posts.length > 0) {
+        this.posts = [...posts, ...this.posts];
+      }
+      this.isLoading = false;
+    });
   }
 
   viewPost(post: Post): void {
     const dialogRef = this.dialog.open(ViewPostComponent, {
-      width: 'auto',  // Let the width be determined by the content
-      height: 'auto', // Let the height be determined by the content
-      maxWidth: '90vw', // Ensure the dialog doesn’t exceed 90% of the viewport width
-      maxHeight: '90vh', // Ensure the dialog doesn’t exceed 90% of the viewport height
+      width: 'auto',
+      height: 'auto',
+      maxWidth: '90vw',
+      maxHeight: '90vh',
       data: { post: post }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });

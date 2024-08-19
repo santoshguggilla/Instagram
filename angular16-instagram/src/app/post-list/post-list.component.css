@@ -1,48 +1,29 @@
-/* Base styles for the post-row */
-.post-row {
+/* ---FOR PROFILE ----------*/
+.post-row1 {
   display: flex;
   justify-content: center; /* Center content */
   margin-bottom: 20px;
   overflow: hidden; /* Hide overflow content */
   flex-wrap: wrap; /* Ensure wrapping for smaller screens */
 }
-
-.post {
-  margin: 0; /* Remove margin to align posts properly */
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-/* Styles for images and videos in posts */
-.post img,
-.post video {
-  width: 100%; /* Full width of the post container */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure content covers the area */
-  display: block; /* Ensure images and videos do not cause extra space below */
-  transition: opacity 0.3s ease; /* Add transition for fade-out effect */
-}
-
-/* Fade-out effect on hover */
-.post img:hover,
-.post video:hover {
-  opacity: 0.5; /* Fade out to 50% opacity */
-}
-
 /* Styles for profile row */
-.profile-row {
+.profile-row1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow-x: hidden; /* Hide overflow content */
 }
 
-.profile-row .post {
+.profile-row1 .post1 {
   flex: 0 0 calc(33.333% - 20px); /* 3 posts per row with spacing */
 }
-
+.post-header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /* Styles for home row */
-.home-row {
+.home-row1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,69 +32,177 @@
   width: 100vw; /* Full viewport width */
   overflow: hidden; /* Hide overflow content */
 }
-
-.home-row .post {
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Hide overflow content */
-}
-
-.home-posts {
+.home-posts1 {
   width: 100vw; /* Full viewport width */
   height: 100vh; /* Full viewport height */
   object-fit: contain; /* Cover the entire viewport */
   overflow: hidden; /* Hide overflow content */
 }
+.post1 {
+  margin: 0; /* Remove margin to align posts properly */
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 
-/* Navigation button styles for home row */
-.nav-buttons {
-  position: absolute; /* Position at the bottom of the viewport */
-  bottom: 20px; /* Space from the bottom of the screen */
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  display: flex;
-  flex-direction: column; /* Stack buttons vertically */
-  gap: 10px; /* Space between buttons */
+/* Styles for images and videos in posts */
+.post1 img,
+.post1 video {
+  width: 100%; /* Full width of the post container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure content covers the area */
+  display: block; /* Ensure images and videos do not cause extra space below */
+  transition: opacity 0.3s ease; /* Add transition for fade-out effect */
+}
+
+/* Fade-out effect on hover */
+.post1 img:hover,
+.post1 video:hover {
+  opacity: 0.5; /* Fade out to 50% opacity */
+}
+.home-row1 .post1 {
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
   overflow: hidden; /* Hide overflow content */
 }
 
-.nav-button {
-  background-color: #f0f0f0;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 24px;
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .profile-row1 .post1 {
+    flex: 0 0 calc(50% - 10px); /* 2 posts per row on medium screens */
+  }
+
+  
+
+  .home-posts1 {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
 }
 
-.post-home {
-  width: 400px; /* Set a fixed width for the profile image */
-  height: 300px;
-  overflow: hidden; /* Hide overflow content */
+@media (max-width: 576px) {
+  .profile-row1 .post1 {
+    flex: 0 0 calc(100% - 10px); /* 1 post per row on small screens */
+  }
+
+  .post-home1 {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .home-posts1 {
+    width: 100%; /* Adjust to 100% width */
+    height: auto; /* Adjust height automatically */
+  }
+
+ 
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-.postsize {
-  width: 100px;
-  height: 100px;
-  border-radius: 10%;
-  border: 2px solid white;
-}
+/* ----For prioifle-------- */
 
-.post-header {
+
+
+/* Styling for post row */
+.post-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
-.post-footer {
+/* Styling for each post item */
+.post-item {
+  width: 32%; /* Adjust the width to fit 3 items in a row */
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Post header styling */
+.post-item-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Post content styling */
+.post-item-content {
+  padding: 10px;
+}
+
+.post-item-image,
+.post-item-video {
+  width: 100%;
+  height: auto;
+}
+
+/* Ensuring post content has some margin */
+.post-item-content p {
   margin-top: 10px;
 }
 
-.profile-container img.img-circle {
+/* Specific styles for images and videos */
+.profile-post-image, .feed-post-image,
+.profile-post-video, .feed-post-video {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .post-item {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+/* Scrollable container */
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 10px; /* Add padding for better spacing */
+}
+
+/* Home container */
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Middle section (centered) */
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  height: 100vh;
+  padding: 10px; /* Add padding for better spacing */
+}
+
+/* Post card styling */
+.post-card {
+  width: 100%;
+  max-width: 458px;
+  margin-bottom: 20px; /* Add margin to separate cards */
+  border: 1px solid #ddd; /* Light border for card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* White background for cards */
+}
+
+/* Post header styling */
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Border below the header */
+}
+
+.header-images img.img-circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -122,48 +211,70 @@ html, body {
   transition: transform 0.3s ease;
 }
 
-.profile-container img.img-circle:hover {
-  transform: scale(2.1);
+.header-images img.img-circle:hover {
+  transform: scale(1.1);
 }
 
-/* Media queries for responsiveness */
+.header-name {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header-icon {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+/* Post image/video styling */
+.post-image img, 
+.post-image video {
+  width: 100%;
+  height: auto;
+}
+
+/* Post footer styling */
+.post-footer {
+  padding: 10px;
+  border-top: 1px solid #ddd; /* Border above the footer */
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-icons div {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.footer-likes,
+.footer-profile,
+.footer-comments {
+  margin-top: 5px;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .profile-row .post {
-    flex: 0 0 calc(50% - 10px); /* 2 posts per row on medium screens */
+  .col-3,
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
-  .post-home {
-    width: 100%; /* Adjust to 100% width */
-    height: auto; /* Adjust height automatically */
+  .middle-section {
+    margin: 0 auto;
   }
 
-  .home-posts {
-    width: 100%; /* Adjust to 100% width */
-    height: auto; /* Adjust height automatically */
-  }
-}
-
-@media (max-width: 576px) {
-  .profile-row .post {
-    flex: 0 0 calc(100% - 10px); /* 1 post per row on small screens */
+  .post-card {
+    width: 100%;
   }
 
-  .post-home {
-    width: 100%; /* Adjust to 100% width */
-    height: auto; /* Adjust height automatically */
-  }
-
-  .home-posts {
-    width: 100%; /* Adjust to 100% width */
-    height: auto; /* Adjust height automatically */
-  }
-
-  .nav-buttons {
-    bottom: 10px; /* Adjust bottom space for smaller screens */
-    gap: 5px; /* Reduce gap between buttons */
-  }
-
-  .nav-button {
-    font-size: 18px; /* Reduce font size for buttons */
+  .post-image img,
+  .post-image video {
+    height: auto;
   }
 }

@@ -10,4 +10,5 @@ export interface Post {
     createdAt: Date;
     content:string;
     user?:User;
+    timestamp?: Date;
   }
