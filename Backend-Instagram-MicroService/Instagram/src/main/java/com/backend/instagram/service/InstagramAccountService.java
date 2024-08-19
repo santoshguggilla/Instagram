@@ -34,5 +34,10 @@ public interface InstagramAccountService {
 
 	ResponseEntity<Object> getUsersByPosts(List<Integer> userids);
 
+	ResponseEntity<Object> unFollowUsers(List<Integer> userids);
+
+	ResponseEntity<Object> followUsers(List<Integer> userids);
+
+
 
 }

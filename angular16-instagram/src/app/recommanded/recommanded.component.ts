@@ -11,8 +11,11 @@ import { FollowService } from '../service/follow.service';
   styleUrls: ['./recommanded.component.css']
 })
 export class RecommandedComponent implements OnInit {
+
   userList: User[] = [];
   profile: User | null = null;
+  unFollowed : boolean = true;
+  followed : boolean = false;
 
   constructor(
     private userService: UserService,
@@ -22,13 +25,23 @@ export class RecommandedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(data => {
-      this.userList = data.map(user => ({ ...user, followed: false }));
-    });
     this.profile = this.authService.getUser();
     if (!this.profile) {
       this.router.navigate(['']);
     }
+    this.getUnFollowedUsers();
+  }
+
+  getUnFollowedUsers(): void {
+    this.userService.getUnFollowedUsers(this.profile?.id).subscribe(data => {
+      this.userList = data.map(user => ({ ...user, followed: false }));
+    });
+  }
+
+  getFollowedUsers(): void {
+    this.userService.getFollowedUsers(this.profile?.id).subscribe(data => {
+      this.userList = data.map(user => ({ ...user, followed: true }));
+    });
   }
 
   followUser(followee: User): void {
@@ -67,5 +80,24 @@ export class RecommandedComponent implements OnInit {
 
   removeUser(user: User): void {
     this.userList = this.userList.filter(u => u.id !== user.id);
+  }
+
+  unFollowedList(): void {
+    this.unFollowed = true;
+    this.followed = false;
+    this.getUnFollowedUsers(); // Fetch unfollowed users when this tab is active
+    console.log(this.userList);
+  }
+
+  followedList(): void {
+    this.unFollowed = false;
+    this.followed = true;
+    this.getFollowedUsers(); // Fetch followed users when this tab is active
+    console.log(this.userList);
+    
+  }
+  navigateToProfile(userid:any): void {
+      this.router.navigate(['/profile', userid]);
+    
   }
 }

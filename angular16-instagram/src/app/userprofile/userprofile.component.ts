@@ -31,10 +31,20 @@ export class UserprofileComponent {
 
   ngOnInit(): void {
     const userId = this.route.snapshot.paramMap.get('id');
-   this.user=this.authService.getUser();
-   if(!this.user || this.user.id!== Number(userId)){
-    this.router.navigate(['']);
-   }
+    const loggedUser = this.authService.getUser();
+    if (userId) {
+      const parsedUserId = Number(userId);
+      if (loggedUser && loggedUser.id === parsedUserId) {
+        this.user = loggedUser;
+      } else {
+        this.userService.getUserById(userId).subscribe((user) => {
+          this.user = user;
+        });
+      }
+    } else {
+      // Handle case where userId is null or undefined
+      this.router.navigate(['']);
+    }
     console.log(userId);
     if (userId) {
       this.postService.getPostsByUserId(userId).subscribe(posts =>{

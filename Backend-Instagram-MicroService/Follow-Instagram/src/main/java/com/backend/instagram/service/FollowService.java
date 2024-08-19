@@ -12,5 +12,7 @@ public interface FollowService {
 
 	ResponseEntity<Object> userFollowees(int id);
 
+	ResponseEntity<Object> getFollowList();
+
 	
 }

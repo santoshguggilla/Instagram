@@ -3,13 +3,11 @@ package com.backend.instagram.service;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.instagram.model.InstagramAccount;
 import com.backend.instagram.repository.InstagramAccountRepository;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class InstagramAccountServiceImpl implements InstagramAccountService {
 	
 	@Autowired
@@ -173,6 +174,22 @@ public class InstagramAccountServiceImpl implements InstagramAccountService {
 	public ResponseEntity<Object> getUsersByPosts( List<Integer> userids) {
 		 
 		return ResponseEntity.ok(instagramAccountRepository.findByUserIdList(userids));
+	}
+
+	@Override
+	public ResponseEntity<Object> unFollowUsers(List<Integer> userids) {
+		log.info("userids "+userids);
+		List<InstagramAccount> list=instagramAccountRepository.findByNotUserIdList(userids);
+		log.info("usrlist "+list);
+		return ResponseEntity.ok(list);
+	}
+
+	@Override
+	public ResponseEntity<Object> followUsers(List<Integer> userids) {
+		log.info("userids "+userids);
+		List<InstagramAccount> list=instagramAccountRepository.findByUserIdList(userids);
+		log.info("usrlist "+list);
+		return ResponseEntity.ok(list);
 	}
 
 	

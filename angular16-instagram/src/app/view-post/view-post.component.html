@@ -1,8 +1,10 @@
 <h1 mat-dialog-title>Post Details</h1>
 <div mat-dialog-content class="dialog-content">
-  <button mat-icon-button class="delete-button" (click)="deletePost()">
-    <h4>delete</h4>
-  </button>
+    <div *ngIf="owner">
+        <button mat-icon-button class="delete-button" (click)="deletePost()">
+            <h4>delete</h4>
+        </button>
+    </div>
   <div class="media-container">
     <div *ngIf="data.post.imageUrl" class="media">
       <img [src]="'data:image/png;base64,' + data.post.imageUrl" alt="Post Image" class="post-image">

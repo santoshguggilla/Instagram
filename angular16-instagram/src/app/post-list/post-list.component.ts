@@ -29,15 +29,21 @@ export class PostListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    const userId = Number(this.route.snapshot.paramMap.get('id'));
+  
     this.routeSubscription = this.route.url.subscribe((url: UrlSegment[]) => {
       this.isProfilePage = url.some(segment => segment.path === 'profile');
-      if (this.user && this.user.id && this.isProfilePage) {
+      
+      if (userId && this.user && this.user.id === userId && this.isProfilePage) {
         this.loadUserPosts(this.user.id.toString());
+      } else if (userId && this.isProfilePage) {
+        this.loadUserPosts(userId.toString()); // Convert userId to string before passing
       } else {
         this.loadAllPosts();
       }
     });
   }
+  
 
   ngOnDestroy(): void {
     if (this.routeSubscription) {
@@ -130,4 +136,5 @@ export class PostListComponent implements OnInit, OnDestroy {
       console.log('The dialog was closed');
     });
   }
+  
 }

@@ -33,6 +33,7 @@ import { ViewPostComponent } from './view-post/view-post.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CreatePostPreviewComponent } from './create-post-preview/create-post-preview.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AddStatusComponent } from './add-status/add-status.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     UserStatusComponent,
     ViewPostComponent,
     CreatePostPreviewComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    AddStatusComponent
  
   ],
   imports: [

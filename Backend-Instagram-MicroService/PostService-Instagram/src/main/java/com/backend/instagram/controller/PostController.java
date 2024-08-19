@@ -1,6 +1,6 @@
   package com.backend.instagram.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import com.backend.instagram.service.PostService;
 
 @RestController
 @RequestMapping("/posts")  
-@CrossOrigin(origins={"http://10.0.0.69:7894"})   
+@CrossOrigin(origins={"http://10.0.0.5:61023"})   
 public class PostController {
     @Autowired
     private PostService postService;
@@ -30,7 +30,7 @@ public class PostController {
     }
     
     @GetMapping("/posts")
-    public List<Post> getAllPosts(){
+    public Set<Post> getAllPosts(){
     	return postService.findAll();
     }
     

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/user.model';
@@ -12,14 +12,21 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './view-post.component.html',
   styleUrls: ['./view-post.component.css']
 })
-export class ViewPostComponent {
+export class ViewPostComponent  implements OnInit{
   
   newComment: string = '';
-
-  constructor(private postService:PostService,
+  user:User|null=null;
+  owner:boolean=false;
+  constructor(private postService:PostService, private authService:AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ViewPostComponent>
   ) {}
+  ngOnInit(): void {
+   this.user= this.authService.getUser();
+   if(!this.user || this.user.id == this.data.post.userId){
+    this.owner=true;
+   }
+  }
 
   close(): void {
     this.dialogRef.close();

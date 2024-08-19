@@ -1,6 +1,8 @@
 package com.backend.instagram.service;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,6 +53,16 @@ public class FollowServiceImpl implements FollowService{
 	public ResponseEntity<Object> userFollowees(int id) {
 		Set<Follow> followees=followRespository.findByFolloweeId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(followees);
+	}
+
+	@Override
+	public ResponseEntity<Object> getFollowList() {
+		
+		List<Follow> followList = followRespository.findAll();
+		Set<Integer> followUserIds = followList.stream()
+		    .map(Follow::getFolloweeId)  // Extract the followeeId
+		    .collect(Collectors.toSet());  // Collect into a Set to remove duplicates
+		return ResponseEntity.status(HttpStatus.OK).body(followUserIds);
 	}
 
 	

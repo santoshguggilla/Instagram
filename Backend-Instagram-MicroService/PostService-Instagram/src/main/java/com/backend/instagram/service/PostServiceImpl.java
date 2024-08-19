@@ -4,8 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,9 @@ public class PostServiceImpl implements PostService{
 	    }
 
 		@Override
-		public List<Post> findAll() {
-			return postRepository.findAll();
+		public Set<Post> findAll() {
+		    List<Post> postsList = postRepository.findAll();
+		    return new HashSet<>(postsList);
 		}
 		@Override
 		public ResponseEntity<Object> createPost(int id, MultipartFile file, String description,Post post) {

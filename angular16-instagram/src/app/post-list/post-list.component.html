@@ -9,7 +9,7 @@
         
       </div>
       <div class="post-content" *ngIf="post.videoUrl" (click)="viewPost(post)">
-        <video controls>
+        <video controls >
           <source [src]="'data:video/mp4;base64,' + post.videoUrl" type="video/mp4" [ngClass]="{ 'profile-posts': isProfilePage, 'home-posts': !isProfilePage}">
           Your browser does not support the video tag.
         </video>
