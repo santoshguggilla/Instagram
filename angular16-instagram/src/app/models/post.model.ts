@@ -1,6 +1,7 @@
 import { User } from "./user.model";
 
 export interface Post {
+    showDetails: boolean;
     id: number;
     userId: number;
     imageUrl: string;
@@ -11,4 +12,5 @@ export interface Post {
     content:string;
     user?:User;
     timestamp?: Date;
+    comments:number;
   }

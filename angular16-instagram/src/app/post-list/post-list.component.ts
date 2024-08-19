@@ -41,7 +41,13 @@ export class PostListComponent implements OnInit, OnDestroy {
       }
     });
   }
+  showDetails(post: Post): void {
+    post.showDetails = true;
+  }
 
+  hideDetails(post: Post): void {
+    post.showDetails = false;
+  }
   ngOnDestroy(): void {
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
@@ -52,6 +58,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.postService.getPostsByUserId(userId).subscribe(posts => {
       this.posts = posts;
       this.isEndOfPosts = false;
+      this.mapUsersToPosts();
     });
   }
 
@@ -80,6 +87,8 @@ export class PostListComponent implements OnInit, OnDestroy {
 
     this.posts.forEach(post => {
       post.user = userMap.get(post.userId);
+      post.comments= 20;
+      post.likes=55;
     });
   }
 

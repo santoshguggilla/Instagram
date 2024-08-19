@@ -1,23 +1,25 @@
-<div *ngIf="isProfilePage">
-  <div *ngFor="let row of chunk(posts, isProfilePage ? 3 : 1)" class="post-row1" [ngClass]="{ 'profile-row1': isProfilePage, 'home-row1': !isProfilePage }">
-    <div *ngFor="let post of row" class="post1">
-      <div class="post-header1">
-        <!-- Add any header content here -->
-      </div>
-      <div class="post-content1" *ngIf="post.imageUrl" (click)="viewPost(post)">
-        <img [src]="'data:image/png;base64,' + post.imageUrl" alt="Post Image" [ngClass]="{ 'profile-posts1': isProfilePage, 'home-posts1': !isProfilePage}" style="transition: transform 0.3s ease; transform: scale(2.1);">
-        <p>{{ post.content }}</p>
-      </div>
-      <div class="post-content1" *ngIf="post.videoUrl" (click)="viewPost(post)">
-        <video controls>
-          <source [src]="'data:video/mp4;base64,' + post.videoUrl" type="video/mp4" [ngClass]="{ 'profile-posts1': isProfilePage, 'home-posts1': !isProfilePage}">
-          Your browser does not support the video tag.
-        </video>
-        <p>{{ post.content }}</p>
-      </div>
+<div *ngIf="isProfilePage" class="post-container">
+  <div *ngFor="let post of posts" class="media-card" (mouseover)="showDetails(post)" (mouseleave)="hideDetails(post)">
+    <div class="media-content" (click)="viewPost(post)">
+      <img *ngIf="post.imageUrl" [src]="'data:image/png;base64,' + post.imageUrl" alt="Post Image">
+      <video *ngIf="post.videoUrl" controls>
+        <source [src]="'data:video/mp4;base64,' + post.videoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
+    <div class="details" *ngIf="post.showDetails">
+      <div class="post-details">
+        <div class="icon-container">
+          <i class="fas fa-heart"></i> {{ post.likes }}
+        </div>
+        <div class="icon-container">
+          <mat-icon>comment</mat-icon> {{ post.comments }}
+        </div>
+      </div>
   </div>
 </div>
+</div>
+
 <div *ngIf="!isProfilePage">
   <div class="row home-container">
     <!-- First section -->
@@ -38,7 +40,7 @@
                 <div></div>
               </div>
               <div class="header-name">
-                <span>{{ post.user?.fullName }} . {{ post.timestamp | date:'short' }}</span>
+                <span>{{ post.user?.fullName }}  {{ post.timestamp | date:'short' }}</span>
               </div>
               <div class="header-icon">
                 <span>---</span>
