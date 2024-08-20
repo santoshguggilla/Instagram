@@ -11,7 +11,7 @@ export class UserService {
   
   
   
-  userUrl: string = "http://10.0.0.5:8080/api";
+  userUrl: string = "http://10.0.0.36:8080/api";
 
   constructor(private http: HttpClient) {
    

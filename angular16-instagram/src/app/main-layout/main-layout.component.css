@@ -30,7 +30,7 @@ html, body {
 /*----------- Custom scrollbar styling-----------*/
 /* Custom scrollbar styling */
 .main-content::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 8px; /* Width of the scrollbar */
 }
 
 .main-content::-webkit-scrollbar-track {
@@ -41,9 +41,11 @@ html, body {
   background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
   border-radius: 10px; /* Round scrollbar */
   border: 2px solid #f1f1f1; /* Add space around scrollbar */
+  transition: width 0.3s ease; /* Smooth transition for thickness change */
 }
 
 .main-content::-webkit-scrollbar-thumb:hover {
+  width: 12px; /* Increased width on hover */
   background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 }
 

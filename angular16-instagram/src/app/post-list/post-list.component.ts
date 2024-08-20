@@ -41,6 +41,35 @@ export class PostListComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  // Load posts by user and sort by timestamp
+  loadUserPosts(userId: string): void {
+    this.postService.getPostsByUserId(userId).subscribe(posts => {
+      this.posts = this.sortPostsByTimestamp(posts);
+      this.isEndOfPosts = false;
+      this.mapUsersToPosts();
+    });
+  }
+
+  // Load all posts and sort by timestamp
+  loadAllPosts(): void {
+    this.postService.getAllPosts().subscribe(posts => {
+      this.posts = this.sortPostsByTimestamp(posts);
+      this.getAllUsers();
+    });
+  }
+
+  // Sort posts by timestamp (recent first)
+  sortPostsByTimestamp(posts: Post[]): Post[] {
+    console.log('Sorting posts:', posts.map(post => post.timestamp)); // For debugging
+    return posts.sort((a, b) => {
+      const dateA = a.timestamp ? new Date(a.timestamp).getTime() : 0;
+      const dateB = b.timestamp ? new Date(b.timestamp).getTime() : 0;
+      return dateB - dateA; // Descending order: latest posts first
+    });
+  }
+   
+
   showDetails(post: Post): void {
     post.showDetails = true;
   }
@@ -54,20 +83,20 @@ export class PostListComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadUserPosts(userId: string): void {
-    this.postService.getPostsByUserId(userId).subscribe(posts => {
-      this.posts = posts;
-      this.isEndOfPosts = false;
-      this.mapUsersToPosts();
-    });
-  }
+  // loadUserPosts(userId: string): void {
+  //   this.postService.getPostsByUserId(userId).subscribe(posts => {
+  //     this.posts = posts;
+  //     this.isEndOfPosts = false;
+  //     this.mapUsersToPosts();
+  //   });
+  // }
 
-  loadAllPosts(): void {
-    this.postService.getAllPosts().subscribe(posts => {
-      this.posts = posts;
-      this.getAllUsers();
-    });
-  }
+  // loadAllPosts(): void {
+  //   this.postService.getAllPosts().subscribe(posts => {
+  //     this.posts = posts;
+  //     this.getAllUsers();
+  //   });
+  // }
 
   getAllUsers(): void {
     const userIds = this.posts.map(post => post.userId);
@@ -153,5 +182,16 @@ export class PostListComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+   // Play video on hover
+   playVideo(event: Event): void {
+    const video = (event.target as HTMLVideoElement);
+    video.play();
+  }
+
+  // Pause video on mouse leave
+  pauseVideo(event: Event): void {
+    const video = (event.target as HTMLVideoElement);
+    video.pause();
   }
 }
