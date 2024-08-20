@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,10 @@ public class PostServiceImpl implements PostService{
 	    	return ResponseEntity.status(HttpStatus.OK).body(postsById);
 	    }
 
-		@Override
-		public List<Post> findAll() {
-			return postRepository.findAll();
-		}
+	    @Override
+	    public List<Post> findAll() {
+	        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+	    }
 		@Override
 		public ResponseEntity<Object> createPost(int id, MultipartFile file, String description,Post post) {
 		    try {

@@ -14,10 +14,10 @@ public interface LikeRepository  extends JpaRepository<Like, Integer>{
 	Like findByPostId(int postid);
 	
 	@Query("SELECT l.userId FROM Like l WHERE l.postId = :postId")
-	List<Integer> findUserIdsByPostId(int postid);
+	List<Integer> findUserIdsByPostId(int postId);
 	
 	@Query("SELECT l.postId FROM Like l WHERE l.userId = :userId")
-	List<Integer> findPostIdsByUserId(int userid);
+	List<Integer> findPostIdsByUserId(int userId);
 
 	
 }

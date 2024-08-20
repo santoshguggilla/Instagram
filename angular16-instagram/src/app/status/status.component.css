@@ -1,11 +1,12 @@
 .user-list-container {
+    position: relative; /* For positioning the nav buttons */
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 900px;
     margin: auto;
-    padding: 20px;
+    /* padding: 20px; */
     box-sizing: border-box;
 }
 
@@ -15,30 +16,25 @@
     gap: 20px;
     margin-bottom: 20px; /* Space between profiles and navigation buttons */
     width: 100%;
+    position: relative; /* For positioning the nav buttons */
 }
 
 .user-info {
+    position: relative; /* For positioning the nav buttons */
     padding: 10px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.user-info:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: transparent; /* Transparent background */
+    border-radius: 50%; /* Ensure circular shape */
+    box-shadow: none; /* Remove shadow */
 }
 
 .img-circle {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-bottom: 10px;
     border: 2px solid blue;
     transition: transform 0.3s ease;
 }
@@ -48,21 +44,41 @@
 }
 
 .nav-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%; /* Full width for proper positioning */
     display: flex;
-    gap: 20px;
+    justify-content: space-between; /* Push buttons to the edges */
+    transform: translateY(-50%); /* Center vertically */
+    padding: 0 20px; /* Padding to ensure buttons are not too close to the edge */
+    box-sizing: border-box;
 }
 
 .nav-button {
-    background-color: #f0f0f0;
+    background-color: #f3efef; /* Gray background color */
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     cursor: pointer;
-    font-size: 24px;
-    border-radius: 4px;
+    font-size: 30px; /* Size of the < and > symbols */
+    color: #333; /* Color of the symbols */
+    border-radius: 50%; /* Round shape */
     transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 30px; /* Ensures round button */
+    height: 30px; /* Ensures round button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-buttons > .nav-button:first-child {
+    /* margin-right: auto; Align the first button to the left */
+    float: right;
+}
+
+.nav-buttons > .nav-button:last-child {
+    margin-left: auto; /* Align the last button to the right */
 }
 
 .nav-button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.1);
+    background-color: #c0c0c0; /* Darker gray on hover */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
 }

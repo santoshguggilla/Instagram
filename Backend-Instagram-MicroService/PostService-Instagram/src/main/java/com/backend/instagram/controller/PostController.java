@@ -1,5 +1,6 @@
   package com.backend.instagram.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import com.backend.instagram.service.PostService;
 
 @RestController
 @RequestMapping("/posts")  
-@CrossOrigin(origins={"http://10.0.0.36:7894", "http:// 10.0.0.36:4200"})   
+@CrossOrigin(origins={"http://10.0.0.5:61023", "http://10.0.0.36:7894", "http:// 10.0.0.36:4200"})   
 public class PostController {
     @Autowired
     private PostService postService;
@@ -37,6 +38,7 @@ public class PostController {
     @PostMapping("/createpost/{id}")
     public ResponseEntity<Object> createPost(@PathVariable("id") int id,@RequestParam("file") MultipartFile file, @RequestParam("descrption") String description){
     	Post post=new Post();
+    	post.setCreatedAt(LocalDateTime.now());
     	return postService.createPost(id,file,description,post);
     }
     

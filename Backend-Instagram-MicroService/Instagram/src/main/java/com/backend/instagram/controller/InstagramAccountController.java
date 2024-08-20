@@ -19,7 +19,7 @@ import com.backend.instagram.service.InstagramAccountService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = { "http://10.0.0.36:7894", "http:// 10.0.0.36:4200" })
+@CrossOrigin(origins = {"http://10.0.0.5:61023", "http://10.0.0.36:7894", "http:// 10.0.0.36:4200" })
 public class InstagramAccountController {
 
 	@Autowired

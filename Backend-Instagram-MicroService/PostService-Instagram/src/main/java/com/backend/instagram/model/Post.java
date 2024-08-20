@@ -1,5 +1,7 @@
 package com.backend.instagram.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,8 @@ public class Post {
 	@Column(name = "video_url", length = 100000000)
 	private String videoUrl;
 	private String mediaType;
+	
+	private LocalDateTime createdAt;
 	public String getVideoUrl() {
 		return videoUrl;
 	}
@@ -68,5 +72,13 @@ public class Post {
 
 	public void setMediaType(String mediaType) {
 		this.mediaType = mediaType;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
 }
