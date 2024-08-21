@@ -17,10 +17,11 @@ export class SidebarComponent {
 
   user: User | null = null;
   @ViewChild(CreatePostModalComponent) createPostModal!: CreatePostModalComponent;
+  
   constructor(private authService: AuthService, 
     private router: Router,
     public dialog: MatDialog,
-    private userService:UserService,
+    private userService: UserService,
     private renderer: Renderer2
   ) {}
 
@@ -32,46 +33,47 @@ export class SidebarComponent {
   navigateToProfile(): void {
     if (this.user) {
       this.router.navigate(['/profile', this.user.id]);
-    }else{
-      alert("session expired please login")
+    } else {
+      alert("Session expired. Please login.");
       this.router.navigate(['']);
     }
   }
 
   openCreateModal(): void {
     this.dialog.open(CreatePostModalComponent, {
-
       width: '250px',
       data: { /* data to pass to the dialog, if any */ }
     });
   }
 
-  navigateToHome() :void{
+  navigateToHome(): void {
     if (this.user) {
       this.router.navigate(['/home']);
-    }else{
-      alert("session expired please login")
+    } else {
+      alert("Session expired. Please login.");
       this.router.navigate(['']);
     }
-    
   }
+
   openDialog(): void {
     this.dialog.open(CreatePostModalComponent, {
-
       width: '550px',
       data: { /* data to pass to the dialog, if any */ }
     });
   }
-  logout():void {
+
+  logout(): void {
     this.authService.logout();
   }
 
-  closeDialog():void{
+  closeDialog(): void {
     this.dialog.closeAll();
   }
+
   recommanded() {
     this.router.navigate(['recommandedList']);
   }
+
   onThemeChange(theme: string) {
     const profileHeader = document.querySelector('.profile-container h4') as HTMLElement;
     if (profileHeader) {

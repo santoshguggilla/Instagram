@@ -34,7 +34,7 @@
 
 hr {
   border: none; /* Remove the default border */
-  height: 3px; /* Set the desired thickness of the hr */
+  height: 5px; /* Set the desired thickness of the hr */
   background: linear-gradient(to bottom, #df08a9 0%, #da1979 100%);
   margin: 20px 0; /* Add some spacing if necessary */
   border-radius: 5px;

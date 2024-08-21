@@ -3,10 +3,11 @@
   height: 100vh;
 }
 
-h1{
+h1 {
   font-weight: bold;
   font-size: 25px;
 }
+
 .sidebar img.img-fluid {
   width: 100%;
   cursor: pointer;
@@ -89,8 +90,6 @@ h1{
     'opsz' 24;
 }
 
-
-
 .sidebar-item {
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -99,7 +98,7 @@ h1{
   padding: 10px 0;
 }
 
-.sidebar-item .button-container, .sidebar-item  {
+.sidebar-item .button-container, .sidebar-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +113,5 @@ h1{
 /* Dark theme styles for Profile header */
 .dark-theme .sidebar .profile-container h4 {
   color: #fff; /* Color when dark theme is active */
-font-weight: bold;
+  font-weight: bold;
 }
-
-

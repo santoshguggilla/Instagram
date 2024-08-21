@@ -28,7 +28,7 @@
   <div class="row home-container">
     <!-- First section -->
     <div class="col-3">
-      <h3>black</h3>
+      <!-- <h3>black</h3> -->
     </div>
 
     <!-- Second section (centered) -->
@@ -47,8 +47,11 @@
                 <span>{{ post.user?.fullName }}  {{ post.timestamp | date:'short' }}</span>
               </div>
               <div class="header-icon">
-                <span>---</span>
+                <button mat-icon-button (click)="openDialog()">
+                  ---
+                </button>
               </div>
+              
             </div>
             <div class="post-image" *ngIf="post.imageUrl">
               <div class="image-container">
@@ -91,11 +94,11 @@
 
     <!-- Third section -->
     <div class="col-3">
-      <h3>brown</h3>
-      <!-- Navigation Buttons -->
+      <!-- <h3>brown</h3>
+      Navigation Buttons
       <div class="nav-buttons">
-        <!-- Navigation buttons removed as per your previous request -->
-      </div>
+        Navigation buttons removed as per your previous request
+      </div> -->
     </div>
   </div>
 </div>

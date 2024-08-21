@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ViewPostComponent } from '../view-post/view-post.component';
 import { MatDialog } from '@angular/material/dialog';
+import { OptionDialogComponent } from '../option-dialog/option-dialog.component';
 
 @Component({
   selector: 'app-post-list',
@@ -28,7 +29,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -193,5 +194,18 @@ export class PostListComponent implements OnInit, OnDestroy {
   pauseVideo(event: Event): void {
     const video = (event.target as HTMLVideoElement);
     video.pause();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(OptionDialogComponent, {
+      width: '360px'
+      
+     
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+      // Handle dialog result here
+    });
   }
 }

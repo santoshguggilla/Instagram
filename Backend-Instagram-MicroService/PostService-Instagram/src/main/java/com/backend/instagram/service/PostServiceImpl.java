@@ -55,7 +55,7 @@ public class PostServiceImpl implements PostService{
 		        // Save Base64 string and other post details
 		        if (extension.equals(".jpg") || extension.equals(".png") || extension.equals(".jpeg")) {
 		            post.setImageUrl(base64String);
-		        } else if (extension.equals(".mp4") || extension.equals(".avi") || extension.equals(".mov")) {
+		        } else if (extension.equals(".mp4") || extension.equals(".avi") || extension.equals(".mov") || extension.equals(".gif")) {
 		            post.setVideoUrl(base64String);
 		        } else {
 		            throw new IllegalArgumentException("Unsupported file type");

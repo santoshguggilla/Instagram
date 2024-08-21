@@ -93,6 +93,7 @@ export class CreatePostModalComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '300px',
       maxWidth: '90vw',
+      
     });
 
     dialogRef.afterClosed().subscribe(result => {
