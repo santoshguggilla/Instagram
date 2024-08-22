@@ -17,4 +17,6 @@ export class ConfirmationDialogComponent {
   onCancel(): void {
     this.dialogRef.close(); // Close the dialog without any result
   }
+
+  
 }

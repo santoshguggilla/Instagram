@@ -7,7 +7,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./option-dialog.component.css']
 })
 export class OptionDialogComponent {
-  constructor(public dialogRef: MatDialogRef<OptionDialogComponent>) { }
+
+  constructor(
+    public dialogRef: MatDialogRef<OptionDialogComponent>) { }
 
   handleUnfollow() {
     // Logic for unfollow action

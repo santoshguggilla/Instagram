@@ -1,33 +1,44 @@
 <div class="sidebar">
-  <img src="/assets/instagram-logo-name.png" alt="Instagram Logo" class="img-fluid mb-3" (click)="navigateToHome()">
-  <ul>
+  <img src="/assets/instagram-logo-name.png" alt="Instagram Logo" class="logo" >
+
+    <ul class="nav-buttons">
+      <li>
+        <button class="nav-button" (click)="navigateToHome()">
+          <mat-icon>home</mat-icon> Home
+        </button>
+      </li>
+      <li>
+        <button class="nav-button" (click)="navigateToSearch()">
+          <mat-icon>search</mat-icon> Search
+        </button>
+      </li>
+      <li>
+        <button class="nav-button" (click)="navigateToReels()">
+          <mat-icon>movie</mat-icon> Reels
+        </button>
+      </li>
+      <li>
+        <button class="nav-button" (click)="navigateToMessages()">
+          <mat-icon>message</mat-icon> Messages
+        </button>
+      </li>
+      <li>
+        <button class="nav-button" (click)="navigateToNotifications()">
+          <mat-icon>notifications</mat-icon> Notifications
+        </button>
+      </li>
+      <li>
+        <button class="nav-button" (click)="openCreateModal()">
+          <mat-icon>add_circle_outline</mat-icon> Create
+        </button>
+      </li>
     <li class="sidebar-item">
       <div class="profile-container" (click)="navigateToProfile()">
         <img [src]="'data:image/png;base64,' + user?.image" alt="Profile Image" class="img-circle">
-        <h1>Profile</h1>
+        Profile
       </div>
     </li>
-    <li class="sidebar-item">
-      <div class="button-container">
-        <button class="unique-button" (click)="openDialog()"> &oplus; Create</button>
-      </div>
-    </li>
-    <li class="sidebar-item">
-      <div class="button-container">
-        <button class="unique-button" type="button" (click)="logout()">
-          <i class="fa-light fa-arrow-right-from-bracket"></i> Logout
-        </button>
-      </div>
-    </li>
-    <li class="sidebar-item">
-      <div class="button-container">
-        <button class="unique-button" type="button" (click)="recommanded()">Recommanded</button>
-      </div>
-    </li>
-    <li class="sidebar-item">
-      <div>
-        <app-theme-toggle (themeChanged)="onThemeChange($event)"></app-theme-toggle>
-      </div>
-    </li>
+    <li><button class="nav-button logout" (click)="logout()">Logout</button></li>
   </ul>
+ 
 </div>

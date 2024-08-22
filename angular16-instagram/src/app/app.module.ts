@@ -36,6 +36,7 @@ import { CreatePostPreviewComponent } from './create-post-preview/create-post-pr
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { OptionDialogComponent } from './option-dialog/option-dialog.component';
+import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { OptionDialogComponent } from './option-dialog/option-dialog.component';
     ViewPostComponent,
     CreatePostPreviewComponent,
     ConfirmationDialogComponent,
-    OptionDialogComponent
+    OptionDialogComponent,
+    SettingsDialogComponent
  
   ],
   imports: [

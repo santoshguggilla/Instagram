@@ -1,19 +1,117 @@
 .sidebar {
+  position: relative; /* Ensure positioning context for modal */
   padding: 10px;
   height: 100vh;
+  background-color: #fff; /* or any color you prefer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #ccc; /* Vertical line on the right */
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 25px;
-}
-
-.sidebar img.img-fluid {
+.logo {
   width: 100%;
-  cursor: pointer;
-  height: 40px;
+  max-width: 150px; /* Adjust as needed */
+  margin-bottom: 20px;
+  /* cursor: pointer; */
 }
 
+.nav-buttons {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-buttons li {
+  margin-bottom: 10px;
+}
+
+.nav-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #333;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav-button:hover {
+  background-color: #f0f0f0; /* or any color you prefer */
+  color: #000;
+}
+.logout{
+  color: rgb(240, 145, 145);
+}
+.logout:hover{
+  font-weight: bold;
+  color: red;
+}
+.bottom-button-container {
+  margin-top: auto; /* Push the button to the bottom */
+  width: 100%;
+  padding: 10px 0;
+}
+
+.bottom-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #3498db; /* Same as other buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  bottom: 10px; /* Position it at the bottom */
+}
+
+.bottom-button:hover {
+  background-color: #2980b9; /* Darker shade for hover */
+}
+
+.settings-dialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 60px; /* Adjust to position above the button */
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.settings-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #333;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.settings-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+.sidebar-item {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  list-style: none;
+  padding: 10px 0;
+}
 .profile-container {
   display: flex;
   align-items: center;
@@ -22,11 +120,11 @@ h1 {
 }
 
 .profile-container img.img-circle {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
-  border: 2px solid blue;
+  border: 2px solid rgb(248, 232, 215);
   transition: transform 0.3s ease;
 }
 
@@ -34,84 +132,23 @@ h1 {
   transform: scale(1.1);
 }
 
-.sidebar .button-container {
-  width: 100%;
-  margin-bottom: 20px;
+/* On larger screens */
+.nav-button mat-icon {
+  margin-right: 8px; /* Space between icon and text */
 }
 
-.unique-button, .post {
-  padding: 10px 13px;
-  font-size: 18px;
-  color: #fff;
-  background-color: #3498db;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  outline: none;
-  position: relative;
-  overflow: hidden;
-  width: 100%; /* Ensure full width */
+/* On smaller screens */
+@media screen and (max-width: 600px) {
+  .nav-button {
+    justify-content: center; /* Center the icon */
+  }
+  
+  .nav-button mat-icon {
+    margin-right: 0; /* Remove space */
+  }
+  
+  .nav-button span {
+    display: none; /* Hide the text */
+  }
 }
 
-.unique-button:before, .post:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, rgba(50, 173, 50, 0.5), rgba(147, 223, 233, 0) 70%);
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-
-.unique-button:hover:before, .post:hover:before {
-  opacity: 1;
-}
-
-.unique-button:hover, .post:hover {
-  background-color: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
-  color: black;
-  font-weight: bold;
-}
-
-.unique-button:active, .post:active {
-  transform: scale(0.95);
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
-}
-
-.sidebar-item {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: #333;
-  list-style: none;
-  padding: 10px 0;
-}
-
-.sidebar-item .button-container, .sidebar-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-/* Default styles for Profile header */
-.sidebar .profile-container h4 {
-  color: #333; /* Default color */
-}
-
-/* Dark theme styles for Profile header */
-.dark-theme .sidebar .profile-container h4 {
-  color: #fff; /* Color when dark theme is active */
-  font-weight: bold;
-}

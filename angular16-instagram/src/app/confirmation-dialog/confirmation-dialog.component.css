@@ -1,0 +1,63 @@
+mat-icon {
+    vertical-align: middle; /* Align icon with text */
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 24px; /* Adjust icon size as needed */
+  }
+  
+  h1.mat-dialog-title {
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* Adjust title font size if needed */
+  }
+  
+  .dialog-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black; /* Black border for the entire container */
+    border-radius: 8px; /* Optional: rounded corners for a cleaner look */
+  }
+  
+  .dialog-content {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Space between the title and buttons */
+    border-bottom: 1px solid black; /* Black border at the bottom of the content section */
+    padding: 10px; /* Optional: padding for better spacing */
+  }
+  
+  .dialog-content p {
+    color: #000; /* Set text color to black */
+    font-size: 18px; /* Adjust font size if needed */
+    margin: 0; /* Remove default margin */
+    font-size: small;
+  }
+  
+  .dialog-image {
+    width: 54px; /* Adjust size to match the font size */
+    height: 54px; /* Adjust size to match the font size */
+    margin-right: 10px; /* Space between the image and title */
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the end of the container */
+    gap: 10px; /* Space between buttons */
+    border-top: 1px solid white; /* White border at the top of the actions section */
+    padding: 10px; /* Optional: padding for better spacing */
+  }
+  
+  .logout {
+    color: rgb(253, 129, 129);
+  }
+  
+  .logout:hover {
+    color: red;
+  }
+  .logNo{
+    color: rgb(151, 240, 189);
+  }
+  .logNo:hover{
+    color: rgb(48, 236, 130);
+  }
+  
